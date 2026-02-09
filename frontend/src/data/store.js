@@ -40,9 +40,9 @@ export const heroImages = {
 };
 
 export const categoryImages = {
-  women: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=800&fit=crop&crop=center',
-  men: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=center',
-  accessories: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=800&fit=crop&crop=center',
+  women: 'https://images.unsplash.com/photo-1632162451352-df77c3013f25?w=600&h=800&fit=crop&crop=center', // Woman trench coat, neutral bg
+  men: 'https://images.unsplash.com/photo-1661854236305-b02cef4aa0af?w=600&h=800&fit=crop&crop=center', // Man suit, grey bg
+  accessories: 'https://images.unsplash.com/photo-1583791030450-950c8e4a2a8e?w=600&h=800&fit=crop&crop=center', // Gold jewelry, white bg
 };
 
 // Products data - US/UK focused fashion
