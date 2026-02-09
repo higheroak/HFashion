@@ -85,7 +85,11 @@ const SearchBar = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
-  const handleProductClick = useCallback((productId) => {
+  const handleProductClick = useCallback((productId, e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     navigate(`/product/${productId}`);
     setQuery('');
     setResults([]);
