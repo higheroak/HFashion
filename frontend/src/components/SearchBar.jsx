@@ -192,7 +192,7 @@ const SearchBar = ({ isOpen, onClose }) => {
                       {results.map((product) => (
                         <button
                           key={product.id}
-                          onClick={() => handleProductClick(product.id)}
+                          onClick={(e) => handleProductClick(product.id, e)}
                           className="w-full flex items-center gap-3 p-3 hover:bg-secondary/50 transition-colors text-left"
                           data-testid={`search-result-${product.id}`}
                         >
