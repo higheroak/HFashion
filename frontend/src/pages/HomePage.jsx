@@ -156,7 +156,7 @@ const HomePage = () => {
       </section>
 
       {/* Categories */}
-      <section className="py-12 md:py-16 lg:py-24 bg-secondary/20" data-testid="categories-section">
+      <section className="py-10 md:py-12 lg:py-16 bg-secondary/20" data-testid="categories-section">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <div className="text-center mb-6 md:mb-8 lg:mb-12">
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Shop by</span>
