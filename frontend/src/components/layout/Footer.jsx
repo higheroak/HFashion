@@ -121,7 +121,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 HFashion. All rights reserved.
+            © 2026 HFashion. All rights reserved.
           </p>
           <div className="flex gap-6">
             <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
