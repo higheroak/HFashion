@@ -13,6 +13,7 @@ import CheckoutPage from "@/pages/CheckoutPage";
 import OrderConfirmationPage from "@/pages/OrderConfirmationPage";
 import AccountPage from "@/pages/AccountPage";
 import OrderTrackingPage from "@/pages/OrderTrackingPage";
+import SearchResultsPage from "@/pages/SearchResultsPage";
 import { initMedallia } from "@/config/medallia";
 import "@/lib/tracking";
 
@@ -41,6 +42,7 @@ function App() {
               <Route path="/account/orders/:orderId" element={<OrderTrackingPage />} />
               <Route path="/account/addresses" element={<AccountPage />} />
               <Route path="/account/wishlist" element={<AccountPage />} />
+              <Route path="/search" element={<SearchResultsPage />} />
             </Routes>
           </main>
           <Footer />

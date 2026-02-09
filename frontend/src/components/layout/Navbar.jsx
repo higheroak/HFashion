@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import CartSidebar from '@/components/layout/CartSidebar';
+import SearchBar from '@/components/SearchBar';
 
 const navLinks = [
   { href: '/products/new-arrivals', label: 'New Arrivals' },
@@ -18,6 +19,7 @@ const Navbar = () => {
   const location = useLocation();
   const { itemCount, isCartOpen, setIsCartOpen } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const isActive = (href) => location.pathname === href;
 
@@ -93,7 +95,12 @@ const Navbar = () => {
 
           {/* Right Icons */}
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="hidden md:flex" data-testid="search-btn">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsSearchOpen(true)}
+              data-testid="search-btn"
+            >
               <Search className="h-5 w-5" strokeWidth={1.5} />
             </Button>
             
@@ -123,6 +130,9 @@ const Navbar = () => {
 
       {/* Cart Sidebar */}
       <CartSidebar open={isCartOpen} onOpenChange={setIsCartOpen} />
+      
+      {/* Search Overlay */}
+      <SearchBar isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );
 };
