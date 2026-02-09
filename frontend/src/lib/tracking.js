@@ -134,6 +134,9 @@ export const trackProductView = (product) => {
     }
     
     trackEvent('product_view', { productId: product.id, productName: product.name });
+    
+    // Trigger Medallia SPA page view
+    triggerMedalliaSPA();
   }
 };
 
