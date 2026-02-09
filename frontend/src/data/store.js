@@ -1,48 +1,48 @@
 /**
  * HFashion Mock Data Store
- * All data is stored in frontend - no backend required
+ * Frontend-only - all data stored in localStorage
  */
 
-// Product images using placeholder.co for reliable instant loading
+// Real fashion stock photos from Unsplash (direct URLs that load reliably)
 const productImages = {
   // New Arrivals
-  nordicKnit: 'https://placehold.co/600x800/e8e4de/4a5d42?text=Nordic+Knit',
-  sageSweater: 'https://placehold.co/600x800/d4cfc5/4a5d42?text=Sage+Sweater',
-  stackedKnit: 'https://placehold.co/600x800/c9c4ba/4a5d42?text=Stacked+Knit',
-  texturedKnit: 'https://placehold.co/600x800/bfb8ae/4a5d42?text=Textured+Knit',
+  nordicKnit: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop&crop=center',
+  sageSweater: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop&crop=center',
+  stackedKnit: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=800&fit=crop&crop=center',
+  texturedKnit: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=600&h=800&fit=crop&crop=center',
   
   // Men's
-  blueKurta: 'https://placehold.co/600x800/a5b4c0/2c2622?text=Blue+Kurta',
-  geometricShirt: 'https://placehold.co/600x800/9aabb8/2c2622?text=Geometric+Shirt',
-  threePieceSuit: 'https://placehold.co/600x800/5c6670/f5f3ef?text=Three+Piece+Suit',
-  cordJacket: 'https://placehold.co/600x800/c4785a/f5f3ef?text=Cord+Jacket',
+  blueKurta: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop&crop=center',
+  geometricShirt: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=800&fit=crop&crop=center',
+  threePieceSuit: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=800&fit=crop&crop=center',
+  cordJacket: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop&crop=center',
   
   // Women's
-  whiteBlouse: 'https://placehold.co/600x800/f5f3ef/4a5d42?text=White+Blouse',
-  ribbedDress: 'https://placehold.co/600x800/e8e4de/4a5d42?text=Ribbed+Dress',
-  cityDress: 'https://placehold.co/600x800/a5b4c0/2c2622?text=City+Dress',
-  linenMaxi: 'https://placehold.co/600x800/d4cfc5/4a5d42?text=Linen+Maxi',
+  whiteBlouse: 'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&h=800&fit=crop&crop=center',
+  ribbedDress: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop&crop=center',
+  cityDress: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&h=800&fit=crop&crop=center',
+  linenMaxi: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&h=800&fit=crop&crop=center',
   
   // Accessories
-  creamClutch: 'https://placehold.co/600x800/f5f3ef/c4785a?text=Cream+Clutch',
-  jewelrySet: 'https://placehold.co/600x800/d4af37/2c2622?text=Jewelry+Set',
-  sunglasses: 'https://placehold.co/600x800/2c2622/f5f3ef?text=Sunglasses',
-  leatherBelt: 'https://placehold.co/600x800/8b4513/f5f3ef?text=Leather+Belt',
-  leatherWatch: 'https://placehold.co/600x800/2c2622/d4af37?text=Leather+Watch',
-  goldRing: 'https://placehold.co/600x800/d4af37/2c2622?text=Gold+Ring',
+  creamClutch: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop&crop=center',
+  jewelrySet: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=800&fit=crop&crop=center',
+  sunglasses: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=800&fit=crop&crop=center',
+  leatherBelt: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=800&fit=crop&crop=center',
+  leatherWatch: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=800&fit=crop&crop=center',
+  goldRing: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=800&fit=crop&crop=center',
 };
 
 // Hero and category images
 export const heroImages = {
-  main: 'https://placehold.co/800x1000/e8e4de/4a5d42?text=HFashion',
-  secondary: 'https://placehold.co/600x400/d4cfc5/4a5d42?text=Accessories',
-  third: 'https://placehold.co/600x800/c9c4ba/4a5d42?text=Collection',
+  main: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=1000&fit=crop&crop=center',
+  secondary: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=400&fit=crop&crop=center',
+  third: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=800&fit=crop&crop=center',
 };
 
 export const categoryImages = {
-  women: 'https://placehold.co/600x800/e8e4de/4a5d42?text=Women',
-  men: 'https://placehold.co/600x800/5c6670/f5f3ef?text=Men',
-  accessories: 'https://placehold.co/600x800/d4af37/2c2622?text=Accessories',
+  women: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=800&fit=crop&crop=center',
+  men: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=center',
+  accessories: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=800&fit=crop&crop=center',
 };
 
 // Products data
@@ -79,7 +79,7 @@ export const demoUser = {
   id: 'demo-user-001',
   name: 'Demo User',
   email: 'demo@hfashion.com',
-  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100',
+  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
   created_at: '2025-01-01T00:00:00Z',
 };
 
@@ -97,7 +97,6 @@ export const getProducts = (filters = {}) => {
     filtered = filtered.filter(p => p.is_trending);
   }
   
-  // Sort
   if (filters.sort === 'price_asc') {
     filtered.sort((a, b) => a.price - b.price);
   } else if (filters.sort === 'price_desc') {
@@ -118,7 +117,8 @@ export const searchProducts = (query, limit = 10) => {
   return products
     .filter(p => 
       p.name.toLowerCase().includes(lowerQuery) || 
-      p.description.toLowerCase().includes(lowerQuery)
+      p.description.toLowerCase().includes(lowerQuery) ||
+      p.category.toLowerCase().includes(lowerQuery)
     )
     .slice(0, limit);
 };
@@ -153,7 +153,6 @@ export const addToCart = (productId, quantity = 1, size = null, color = null) =>
   
   const cart = getCart();
   
-  // Check if item exists
   const existingIndex = cart.items.findIndex(
     item => item.product_id === productId && item.size === size && item.color === color
   );

@@ -43,9 +43,8 @@ const SearchBar = ({ isOpen, onClose }) => {
   // Focus input when opened
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+      setTimeout(() => inputRef.current?.focus(), 100);
     }
-    // Reset state when closed
     if (!isOpen) {
       setQuery('');
       setResults([]);
@@ -53,7 +52,7 @@ const SearchBar = ({ isOpen, onClose }) => {
     }
   }, [isOpen]);
 
-  // Handle escape key
+  // Handle escape key and prevent body scroll
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
@@ -63,7 +62,6 @@ const SearchBar = ({ isOpen, onClose }) => {
     
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
-      // Prevent body scroll
       document.body.style.overflow = 'hidden';
     }
     
@@ -104,8 +102,11 @@ const SearchBar = ({ isOpen, onClose }) => {
       className="fixed inset-0 z-50"
       data-testid="search-overlay"
     >
-      {/* Solid opaque background */}
-      <div className="absolute inset-0 bg-[#fdfcf8]" style={{ backgroundColor: 'hsl(45, 25%, 98%)' }} />
+      {/* Frosted glass background */}
+      <div 
+        className="absolute inset-0 bg-background/80 backdrop-blur-md"
+        onClick={onClose}
+      />
       
       {/* Content */}
       <div className="relative h-full overflow-y-auto">
@@ -233,7 +234,7 @@ const SearchBar = ({ isOpen, onClose }) => {
             </div>
           )}
 
-          {/* Quick Links */}
+          {/* Quick Links - Only show when no search query */}
           {!showResults && query.length < 2 && (
             <div className="mt-6 md:mt-8">
               <p className="text-sm text-muted-foreground mb-3 md:mb-4">Popular Searches</p>
@@ -242,7 +243,7 @@ const SearchBar = ({ isOpen, onClose }) => {
                   <button
                     key={term}
                     onClick={() => setQuery(term)}
-                    className="px-3 md:px-4 py-2 bg-secondary rounded-full text-sm hover:bg-secondary/80 transition-colors"
+                    className="px-3 md:px-4 py-2 bg-card border rounded-full text-sm hover:bg-secondary/50 transition-colors"
                     data-testid={`popular-search-${term.toLowerCase()}`}
                   >
                     {term}
