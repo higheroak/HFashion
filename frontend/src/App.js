@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import { CartProvider } from "@/context/CartContext";
 import { WishlistProvider } from "@/context/WishlistContext";
@@ -18,6 +18,21 @@ import SearchResultsPage from "@/pages/SearchResultsPage";
 import { initMedallia } from "@/config/medallia";
 import "@/lib/tracking";
 
+// Component to track route changes for Medallia SPA
+function MedalliaRouteTracker() {
+  const location = useLocation();
+  
+  useEffect(() => {
+    // Trigger Medallia SPA page view on route change
+    if (window.KAMPYLE_ONSITE_SDK && typeof window.KAMPYLE_ONSITE_SDK.updatePageView === 'function') {
+      window.KAMPYLE_ONSITE_SDK.updatePageView();
+      console.log('[Medallia SPA] Route changed - page view updated:', location.pathname);
+    }
+  }, [location]);
+  
+  return null;
+}
+
 function App() {
   useEffect(() => {
     // Initialize Medallia configuration
@@ -29,6 +44,7 @@ function App() {
       <WishlistProvider>
         <div className="App flex flex-col min-h-screen">
           <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <MedalliaRouteTracker />
             <Navbar />
             <main className="flex-1">
               <Routes>
