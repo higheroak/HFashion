@@ -19,9 +19,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend
     
     steps:
       - name: Checkout repository
@@ -32,12 +29,14 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
-          cache-dependency-path: './frontend/yarn.lock'
+          cache-dependency-path: 'frontend/yarn.lock'
 
       - name: Install dependencies
+        working-directory: frontend
         run: yarn install --frozen-lockfile
 
       - name: Build application
+        working-directory: frontend
         run: yarn build
         env:
           CI: false  # Treat warnings as warnings, not errors
@@ -45,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./frontend/build
+          path: frontend/build
 
   deploy:
     environment:
