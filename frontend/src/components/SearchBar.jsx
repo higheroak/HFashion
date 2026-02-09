@@ -315,7 +315,7 @@ const SearchBar = ({ isOpen, onClose }) => {
                         <button
                           key={product.id}
                           onClick={() => handleProductClick(product.id)}
-                          className="w-full flex items-center gap-4 p-4 hover:bg-secondary/50 transition-colors text-left border-b last:border-b-0"
+                          className="w-full flex items-center gap-4 p-4 hover:bg-secondary/50 transition-colors text-left border-b last:border-b-0 cursor-pointer relative z-10"
                           data-testid={`search-result-${product.id}`}
                         >
                           <div className="w-16 h-20 rounded-lg overflow-hidden bg-secondary flex-shrink-0">
