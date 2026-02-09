@@ -241,15 +241,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-      {/* Medallia Feedback Placeholder */}
-      <section className="py-6 md:py-8 bg-primary/5 text-center" data-testid="medallia-feedback-section">
-        <div className="container mx-auto px-4">
-          <p className="text-xs md:text-sm text-muted-foreground">
-            We value your feedback. Help us improve your shopping experience.
-          </p>
-        </div>
-      </section>
     </div>
   );
 };
