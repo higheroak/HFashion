@@ -3,33 +3,33 @@
  * Frontend-only - all data stored in localStorage
  */
 
-// Real fashion stock photos from Unsplash (curated for US/UK audience)
+// Real fashion stock photos from Unsplash - Clean studio backgrounds for consistent sophisticated look
 const productImages = {
-  // New Arrivals - Knitwear
-  nordicKnit: 'https://images.unsplash.com/photo-1633972767447-5098f0322a45?w=600&h=800&fit=crop&crop=center',
-  sageSweater: 'https://images.unsplash.com/photo-1687275167528-5aac76c3e782?w=600&h=800&fit=crop&crop=center',
-  cableKnit: 'https://images.unsplash.com/photo-1642853474532-9aca78f70629?w=600&h=800&fit=crop&crop=center',
-  cashmereKnit: 'https://images.unsplash.com/photo-1759229874914-c1ffdb3ebd0c?w=600&h=800&fit=crop&crop=center',
+  // New Arrivals - Knitwear (earth tones, neutral backgrounds)
+  nordicKnit: 'https://images.unsplash.com/photo-1671643417206-f407759ec712?w=600&h=800&fit=crop&crop=center', // Woman in turtleneck, warm brown bg
+  sageSweater: 'https://images.unsplash.com/photo-1687275167528-5aac76c3e782?w=600&h=800&fit=crop&crop=center', // Woman sage sweater, light grey bg
+  cableKnit: 'https://images.unsplash.com/photo-1687275162537-b00d99c3ec46?w=600&h=800&fit=crop&crop=center', // Pink sweater, light bg
+  cashmereKnit: 'https://images.unsplash.com/photo-1762509547577-76aa7cf87c62?w=600&h=800&fit=crop&crop=center', // Woman white dress, light blue bg
   
-  // Men's
-  oxfordShirt: 'https://images.unsplash.com/photo-1618591552964-837a5a315fb2?w=600&h=800&fit=crop&crop=center',
-  geometricShirt: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=800&fit=crop&crop=center',
-  threePieceSuit: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=800&fit=crop&crop=center',
-  navyBlazer: 'https://images.unsplash.com/photo-1592878849122-facb97520f9e?w=600&h=800&fit=crop&crop=center',
+  // Men's (professional, clean backgrounds)
+  oxfordShirt: 'https://images.unsplash.com/photo-1656453260437-4f4da3ef81dc?w=600&h=800&fit=crop&crop=center', // Blue shirt tie, grey bg
+  geometricShirt: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=800&fit=crop&crop=center', // Folded shirt, clean bg
+  threePieceSuit: 'https://images.unsplash.com/photo-1661854236305-b02cef4aa0af?w=600&h=800&fit=crop&crop=center', // Man blue suit, grey wall bg
+  navyBlazer: 'https://images.unsplash.com/photo-1608461864721-b8f50c91c147?w=600&h=800&fit=crop&crop=center', // Belt detail, neutral bg
   
-  // Women's
-  whiteBlouse: 'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&h=800&fit=crop&crop=center',
-  womenBlazer: 'https://images.unsplash.com/photo-1681622341243-f57c21b519f3?w=600&h=800&fit=crop&crop=center',
-  midiSkirt: 'https://images.unsplash.com/photo-1605064713960-4d59a174995a?w=600&h=800&fit=crop&crop=center',
-  linenMaxi: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&h=800&fit=crop&crop=center',
+  // Women's (elegant, studio style)
+  whiteBlouse: 'https://images.unsplash.com/photo-1590588503756-08a4b2be5eb9?w=600&h=800&fit=crop&crop=center', // Woman white blazer, light bg
+  womenBlazer: 'https://images.unsplash.com/photo-1734341739615-71be2b1cdb06?w=600&h=800&fit=crop&crop=center', // Woman black dress, dark gradient bg
+  midiSkirt: 'https://images.unsplash.com/photo-1578483570097-eb36f3b58fc0?w=600&h=800&fit=crop&crop=center', // Woman skirt, light neutral bg
+  linenMaxi: 'https://images.unsplash.com/photo-1763652309790-c0f90e5c6bd8?w=600&h=800&fit=crop&crop=center', // White pleated dress, cream bg
   
-  // Accessories
-  creamClutch: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop&crop=center',
-  jewelrySet: 'https://images.unsplash.com/photo-1691370298583-4364b396e1e3?w=600&h=800&fit=crop&crop=center',
-  sunglasses: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=800&fit=crop&crop=center',
-  leatherBelt: 'https://images.unsplash.com/photo-1664286074176-5206ee5dc878?w=600&h=800&fit=crop&crop=center',
-  leatherWatch: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=800&fit=crop&crop=center',
-  goldRing: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=800&fit=crop&crop=center',
+  // Accessories (product photography style, clean backgrounds)
+  creamClutch: 'https://images.unsplash.com/photo-1575403538007-acb790100421?w=600&h=800&fit=crop&crop=center', // Grey handbag, stacked books
+  jewelrySet: 'https://images.unsplash.com/photo-1583791030450-950c8e4a2a8e?w=600&h=800&fit=crop&crop=center', // Gold necklace, white textile
+  sunglasses: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=800&fit=crop&crop=center', // Black sunglasses, white bg
+  leatherBelt: 'https://images.unsplash.com/photo-1734383524180-3c6f9b21e8e3?w=600&h=800&fit=crop&crop=center', // Brown belt, teal bg
+  leatherWatch: 'https://images.unsplash.com/photo-1758887952896-8491d393afe2?w=600&h=800&fit=crop&crop=center', // Black watch, white bg
+  goldRing: 'https://images.unsplash.com/photo-1723361656062-ed14986c7f1a?w=600&h=800&fit=crop&crop=center', // Gold rings, white bg
 };
 
 // Hero and category images - Clean backgrounds for sophisticated look
