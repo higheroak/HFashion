@@ -287,13 +287,6 @@ const ProductDetailPage = () => {
             </div>
           </section>
         )}
-
-        {/* Medallia Feedback Placeholder */}
-        <section className="mt-12 md:mt-16 py-6 md:py-8 bg-secondary/30 rounded-xl text-center" data-testid="medallia-product-feedback">
-          <p className="text-xs md:text-sm text-muted-foreground">
-            Found what you were looking for? Let us know!
-          </p>
-        </section>
       </div>
     </div>
   );
