@@ -30,6 +30,21 @@ const OrderTrackingPage = () => {
     setIsLoading(false);
   }, [orderId]);
 
+  // Trigger Medallia SPA update after embedded container is mounted
+  useEffect(() => {
+    if (!isLoading && order) {
+      // Small delay to ensure DOM is fully rendered
+      const timer = setTimeout(() => {
+        if (window.KAMPYLE_ONSITE_SDK && typeof window.KAMPYLE_ONSITE_SDK.updatePageView === 'function') {
+          window.KAMPYLE_ONSITE_SDK.updatePageView();
+          console.log('[Medallia SPA] Order tracking page loaded with embedded container');
+        }
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading, order]);
+
   const getStatusIndex = (status) => {
     const statusOrder = ['pending', 'confirmed', 'processing', 'shipped', 'delivered'];
     return statusOrder.indexOf(status);
