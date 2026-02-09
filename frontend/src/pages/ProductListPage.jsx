@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, SlidersHorizontal, X } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../components/ui/sheet';
-import { Checkbox } from '../components/ui/checkbox';
-import ProductCard from '../components/ProductCard';
-import { getProducts } from '../lib/api';
-import { trackPageView, trackFilter } from '../lib/tracking';
-import { getCategoryLabel } from '../lib/utils';
+import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Checkbox } from '@/components/ui/checkbox';
+import ProductCard from '@/components/ProductCard';
+import { getProducts } from '@/lib/api';
+import { trackPageView, trackFilter } from '@/lib/tracking';
+import { getCategoryLabel } from '@/lib/utils';
 
 const sortOptions = [
   { value: 'newest', label: 'Newest' },

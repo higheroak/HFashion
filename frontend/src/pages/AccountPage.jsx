@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { User, Package, MapPin, Heart, LogOut, ChevronRight } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Separator } from '../components/ui/separator';
-import { Badge } from '../components/ui/badge';
-import { getUser, getOrders } from '../lib/api';
-import { formatPrice, formatDate, getOrderStatusLabel, getOrderStatusColor } from '../lib/utils';
-import { trackPageView } from '../lib/tracking';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
+import { getUser, getOrders } from '@/lib/api';
+import { formatPrice, formatDate, getOrderStatusLabel, getOrderStatusColor } from '@/lib/utils';
+import { trackPageView } from '@/lib/tracking';
 
 const navItems = [
   { id: 'profile', label: 'Profile', icon: User, href: '/account' },

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ChevronRight, Check, Truck, CreditCard, ShieldCheck } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import { Separator } from '../components/ui/separator';
-import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
-import { useCart } from '../context/CartContext';
-import { createOrder } from '../lib/api';
-import { formatPrice } from '../lib/utils';
-import { trackPageView, trackCheckout, trackCheckoutSelection, trackOrderComplete } from '../lib/tracking';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useCart } from '@/context/CartContext';
+import { createOrder } from '@/lib/api';
+import { formatPrice } from '@/lib/utils';
+import { trackPageView, trackCheckout, trackCheckoutSelection, trackOrderComplete } from '@/lib/tracking';
 import { toast } from 'sonner';
 
 const steps = [

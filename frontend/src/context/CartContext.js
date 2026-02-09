@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import * as api from '../lib/api';
-import { trackCartUpdate } from '../lib/tracking';
+import * as api from '@/lib/api';
+import { trackCartUpdate } from '@/lib/tracking';
 import { toast } from 'sonner';
 
 const CartContext = createContext();

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CheckCircle, Package, Truck, MapPin, Calendar } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Separator } from '../components/ui/separator';
-import { getOrder } from '../lib/api';
-import { formatPrice, formatDate } from '../lib/utils';
-import { trackPageView } from '../lib/tracking';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { getOrder } from '@/lib/api';
+import { formatPrice, formatDate } from '@/lib/utils';
+import { trackPageView } from '@/lib/tracking';
 
 const OrderConfirmationPage = () => {
   const { orderId } = useParams();

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { formatPrice, getCategoryLabel } from '../../lib/utils';
-import { useCart } from '../../context/CartContext';
-import { Button } from '../ui/button';
+import { formatPrice, getCategoryLabel } from '@/lib/utils';
+import { useCart } from '@/context/CartContext';
+import { Button } from '@/components/ui/button';
 
 const ProductCard = ({ product }) => {
   const { addToCart, isLoading } = useCart();

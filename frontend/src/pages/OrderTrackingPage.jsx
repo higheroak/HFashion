@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, Package, Truck, CheckCircle, Clock, MapPin } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Badge } from '../components/ui/badge';
-import { Separator } from '../components/ui/separator';
-import { getOrder } from '../lib/api';
-import { formatPrice, formatDate, getOrderStatusLabel, getOrderStatusColor } from '../lib/utils';
-import { trackPageView } from '../lib/tracking';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { getOrder } from '@/lib/api';
+import { formatPrice, formatDate, getOrderStatusLabel, getOrderStatusColor } from '@/lib/utils';
+import { trackPageView } from '@/lib/tracking';
 
 const statusSteps = [
   { status: 'confirmed', label: 'Order Confirmed', icon: CheckCircle },

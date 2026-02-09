@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Truck, RefreshCw, Shield } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import ProductCard from '../components/ProductCard';
-import { getProducts, seedDatabase } from '../lib/api';
-import { trackPageView } from '../lib/tracking';
+import { Button } from '@/components/ui/button';
+import ProductCard from '@/components/ProductCard';
+import { getProducts, seedDatabase } from '@/lib/api';
+import { trackPageView } from '@/lib/tracking';
 
 const categoryImages = {
   women: 'https://images.unsplash.com/photo-1509087859087-a384654eca4d?w=600&h=800&fit=crop',

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Separator } from '../components/ui/separator';
-import { useCart } from '../context/CartContext';
-import { formatPrice } from '../lib/utils';
-import { trackPageView } from '../lib/tracking';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { useCart } from '@/context/CartContext';
+import { formatPrice } from '@/lib/utils';
+import { trackPageView } from '@/lib/tracking';
 
 const CartPage = () => {
   const { cart, updateCartItem, removeFromCart, isLoading } = useCart();

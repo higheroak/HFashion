@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, User, Menu, X, Search } from 'lucide-react';
-import { useCart } from '../../context/CartContext';
-import { cn } from '../../lib/utils';
-import { Button } from '../ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
-import CartSidebar from './CartSidebar';
+import { ShoppingBag, User, Menu, Search } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import CartSidebar from '@/components/layout/CartSidebar';
 
 const navLinks = [
   { href: '/products/new-arrivals', label: 'New Arrivals' },

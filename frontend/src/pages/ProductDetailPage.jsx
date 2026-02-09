@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, Minus, Plus, Heart, Truck, RefreshCw, Check } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Separator } from '../components/ui/separator';
-import ProductCard from '../components/ProductCard';
-import { getProduct, getProducts } from '../lib/api';
-import { useCart } from '../context/CartContext';
-import { trackPageView, trackProductView, trackProductSelection } from '../lib/tracking';
-import { formatPrice, getCategoryLabel } from '../lib/utils';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import ProductCard from '@/components/ProductCard';
+import { getProduct, getProducts } from '@/lib/api';
+import { useCart } from '@/context/CartContext';
+import { trackPageView, trackProductView, trackProductSelection } from '@/lib/tracking';
+import { formatPrice, getCategoryLabel } from '@/lib/utils';
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
