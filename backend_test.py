@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 
 class HFashionAPITester:
-    def __init__(self, base_url="https://muted-ecommerce.preview.emergentagent.com"):
+    def __init__(self, base_url="https://github-pages-demo.preview.emergentagent.com"):
         self.base_url = base_url
         self.tests_run = 0
         self.tests_passed = 0
