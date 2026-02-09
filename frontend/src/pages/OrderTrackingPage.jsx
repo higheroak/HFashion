@@ -266,11 +266,12 @@ const OrderTrackingPage = () => {
             </Button>
           </Link>
         </div>
-
-        {/* Medallia Embedded Feedback Container */}
-        <div id="medallia_embedded_feedback" className="w-full mt-8 md:mt-12"></div>
       </div>
     </div>
+
+    {/* Medallia Embedded Feedback Container - Sibling of min-h-screen div */}
+    <div id="medallia_embedded_feedback" className="w-full"></div>
+  </>
   );
 };
 
