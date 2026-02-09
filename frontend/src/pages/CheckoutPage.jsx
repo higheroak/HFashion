@@ -83,14 +83,16 @@ const CheckoutPage = () => {
       const order = createOrder(shippingInfo);
       if (order) {
         trackOrderComplete(order);
-        fetchCart();
-        toast.success('Order placed successfully!');
+        // Navigate first, then clear cart (so confirmation page can still show items)
         navigate(`/order-confirmation/${order.id}`);
+        // Delay cart clearing to prevent flash of empty cart
+        setTimeout(() => {
+          fetchCart();
+        }, 100);
       }
     } catch (error) {
       console.error('Error placing order:', error);
       toast.error('Failed to place order. Please try again.');
-    } finally {
       setIsSubmitting(false);
     }
   };
