@@ -66,9 +66,23 @@ const OrderTrackingPage = () => {
 
   const currentStatusIndex = getStatusIndex(order.status);
 
+  // Trigger Medallia SPA update after embedded container is mounted
+  useEffect(() => {
+    // Small delay to ensure DOM is fully rendered
+    const timer = setTimeout(() => {
+      if (window.KAMPYLE_ONSITE_SDK && typeof window.KAMPYLE_ONSITE_SDK.updatePageView === 'function') {
+        window.KAMPYLE_ONSITE_SDK.updatePageView();
+        console.log('[Medallia SPA] Order tracking page loaded with embedded container');
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [order.order_number]);
+
   return (
-    <div className="min-h-screen py-6 md:py-8 lg:py-12" data-testid="order-tracking-page">
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-4xl">
+    <>
+      <div className="min-h-screen py-6 md:py-8 lg:py-12" data-testid="order-tracking-page">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-4xl">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs md:text-sm mb-4 md:mb-6 overflow-x-auto">
           <Link to="/account" className="breadcrumb-item whitespace-nowrap">Account</Link>
