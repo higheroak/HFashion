@@ -19,7 +19,7 @@ Build an e-commerce demo website called "HFashion" — a modern, stylish fashion
 ## Architecture
 **Frontend-Only SPA** (React + Vite + Tailwind CSS + Shadcn/UI)
 - All data mocked in `/app/frontend/src/data/store.js`
-- Cart/Orders persist in localStorage
+- Cart/Orders/Wishlist persist in localStorage
 - No backend server required
 
 ## What's Been Implemented
@@ -27,20 +27,19 @@ Build an e-commerce demo website called "HFashion" — a modern, stylish fashion
 ### Frontend Features (100% Complete)
 - **Homepage**: Hero section with fashion images, featured products, trending products, category cards, testimonials
 - **Product Listing**: Category filtering (Women's, Men's, Accessories, New Arrivals), price range filters, sorting (newest, price asc/desc)
-- **Product Detail**: Product images, size selector, color selector, quantity selector, add to cart
-- **Search Overlay**: Full-screen frosted glass overlay with autocomplete, popular search suggestions
+- **Product Detail**: Product images, size selector, color selector, quantity selector, add to cart, **wishlist button**
+- **Search Overlay**: Desktop: centered dropdown (max-width, 70% height) | Mobile: full-screen overlay with frosted glass
 - **Cart Page**: Dynamic cart with quantity controls, order summary, remove items
 - **Checkout Flow**: 3-step wizard (Shipping → Payment → Review), pre-filled demo data
 - **Order Confirmation**: Success page with order details and tracking info
-- **Account Dashboard**: Profile info (Demo User), order history
+- **Account Dashboard**: Profile info (Demo User), order history, **wishlist with items**
 - **Order Tracking**: Status timeline, shipping info
+- **Wishlist**: Add/remove products, move to cart, persisted in localStorage
 
 ### Medallia Integration Ready
 - Config file: `/app/frontend/src/config/medallia.js`
 - Analytics documentation: `/app/docs/ANALYTICS.md`
-- Script placeholders in `public/index.html`:
-  - `<!-- MEDALLIA DIGITAL FEEDBACK SCRIPT -->` in `<head>`
-  - `<!-- MEDALLIA DXA SCRIPT -->` at end of `<body>`
+- Script placeholders in `public/index.html`
 
 ### Window Variables (`window.hfashion`)
 - Cart: `cartValue`, `cartItemCount`, `cartItems`, `cartAction`
@@ -50,21 +49,25 @@ Build an e-commerce demo website called "HFashion" — a modern, stylish fashion
 - Navigation: `currentPage`, `previousPage`, `searchQuery`, `sortBy`, `filterApplied`
 - Session: `sessionId`, `userId`, `userName`, `isLoggedIn`
 - Engagement: `pageViews`, `productsViewed`, `timeOnSite`, `scrollDepth`
-- Events: `lastEvent`, `eventHistory`
+- **Wishlist**: `wishlistCount`, `lastWishlistAction`, `lastWishlistItem`
 
 ### Mobile Responsive
 - Tested on iPhone viewport (375x812)
 - Mobile hamburger menu
 - Mobile filter sheet
 - 2-column product grid on mobile
+- Full-screen search on mobile
 
 ## Completed Tasks (February 9, 2026)
 - [x] Fixed search overlay with frosted glass effect (createPortal)
+- [x] Desktop search: centered dropdown panel (not full-screen)
+- [x] Mobile search: full-screen overlay (unchanged)
+- [x] Implemented wishlist functionality with localStorage persistence
+- [x] Wishlist button shows filled heart when item is saved
+- [x] Wishlist page displays saved items with "Add to Cart" and "Remove" buttons
+- [x] Updated product images with more relevant fashion photos
 - [x] Removed backend directory and api.js (frontend-only)
-- [x] Verified all product images loading correctly
-- [x] Verified mobile responsiveness
 - [x] Created analytics documentation at `/app/docs/ANALYTICS.md`
-- [x] Enhanced Medallia config with script injection capability
 
 ## Files Structure
 ```
@@ -76,32 +79,25 @@ Build an e-commerce demo website called "HFashion" — a modern, stylish fashion
 │   │   └── index.html        # Medallia script placeholders
 │   └── src/
 │       ├── components/
-│       │   ├── SearchBar.jsx # Search with portal
-│       │   ├── ProductCard.jsx
-│       │   └── layout/
+│       │   ├── SearchBar.jsx # Search with desktop dropdown / mobile fullscreen
+│       │   └── ProductCard.jsx
 │       ├── config/
 │       │   └── medallia.js   # Medallia/scripts config
 │       ├── context/
-│       │   └── CartContext.js
+│       │   ├── CartContext.js
+│       │   └── WishlistContext.js  # NEW: Wishlist state management
 │       ├── data/
 │       │   └── store.js      # All mock data
 │       ├── lib/
 │       │   ├── tracking.js   # window.hfashion tracking
 │       │   └── utils.js
 │       └── pages/
-│           ├── HomePage.jsx
-│           ├── ProductListPage.jsx
-│           ├── ProductDetailPage.jsx
-│           ├── CartPage.jsx
-│           ├── CheckoutPage.jsx
-│           └── ...
 └── memory/
     └── PRD.md
 ```
 
 ## Future Enhancements (Backlog)
 - [ ] Product image gallery with multiple views
-- [ ] Wishlist functionality
 - [ ] Product reviews/ratings
 - [ ] Recently viewed products
 - [ ] Related products recommendations
@@ -110,5 +106,5 @@ Build an e-commerce demo website called "HFashion" — a modern, stylish fashion
 ## Notes
 - ALL DATA IS MOCKED - No real backend or database
 - Demo user is always logged in
-- Orders and cart persist in browser localStorage
+- Orders, cart, and wishlist persist in browser localStorage
 - Medallia scripts not yet integrated (config ready, user will add tags later)
