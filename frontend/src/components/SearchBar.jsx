@@ -217,7 +217,12 @@ const SearchBar = ({ isOpen, onClose }) => {
                       ))}
                     </div>
                     <div className="p-3 border-t bg-secondary/30">
-                      <Button onClick={handleSearchSubmit} variant="outline" className="w-full rounded-full text-sm">
+                      <Button 
+                        onClick={(e) => handleSearchSubmit(e)} 
+                        variant="outline" 
+                        className="w-full rounded-full text-sm"
+                        type="button"
+                      >
                         View all results
                       </Button>
                     </div>
