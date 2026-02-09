@@ -1,72 +1,114 @@
 # HFashion E-Commerce Demo - PRD
 
 ## Original Problem Statement
-Build an e-commerce demo website called "HFashion" — a modern, stylish fashion retail site designed to showcase Medallia Digital Feedback and Medallia DXA functionalities.
+Build an e-commerce demo website called "HFashion" — a modern, stylish fashion retail site with:
+1. No real authentication - single demo account always logged in
+2. Muted earth tones design (not too minimal or vibrant)
+3. Config file for Medallia Digital Feedback and DXA script tags
+4. Real fashion stock photos from Unsplash
+5. Analytics window variables (`window.hfashion`) tracking all user activity
+6. Standard e-commerce features (homepage, product listing, product details, cart, checkout, account pages)
+7. Search functionality with autocomplete
+8. **Frontend-only architecture** - no backend API calls, all data mocked locally
+9. Mobile responsive for flagship phones
 
 ## User Personas
 - **Demo Users**: Always logged in demo account for showcasing Medallia integration
-- **Medalllia Stakeholders**: Users evaluating Digital Feedback and DXA capabilities
+- **Medallia Stakeholders**: Users evaluating Digital Feedback and DXA capabilities
 
-## Core Requirements (Static)
-1. Modern fashion retail design with muted earth tones
-2. Product catalog (~18 items) across 4 categories
-3. Full e-commerce flow: Browse → Product Detail → Cart → Checkout → Order Confirmation
-4. User account with order history and tracking
-5. JavaScript window variables for Medallia DXA integration
-6. Config file for Medallia scripts (header/footer)
-7. Responsive design for desktop and mobile
+## Architecture
+**Frontend-Only SPA** (React + Vite + Tailwind CSS + Shadcn/UI)
+- All data mocked in `/app/frontend/src/data/store.js`
+- Cart/Orders persist in localStorage
+- No backend server required
 
 ## What's Been Implemented
-**Date: February 9, 2026**
 
-### Backend (FastAPI + MongoDB)
-- Products API (CRUD, filtering by category/featured/trending, sorting)
-- Cart API (add, update, remove, clear)
-- Orders API (create, list, get by ID)
-- User API (get profile)
-- Database seeding endpoint
-
-### Frontend (React + Tailwind + Shadcn/UI)
-- **Homepage**: Hero section, featured products, trending products, categories, testimonials
-- **Product Listing**: Category filtering, price filters, sorting (newest, price asc/desc)
-- **Product Detail**: Images, sizes, colors, quantity selector, add to cart
-- **Cart Page**: Dynamic updates, quantity controls, order summary
-- **Checkout Flow**: 3-step (Shipping → Payment → Review)
-- **Order Confirmation**: Success message, order details, tracking info
-- **Account Dashboard**: Profile, order history
+### Frontend Features (100% Complete)
+- **Homepage**: Hero section with fashion images, featured products, trending products, category cards, testimonials
+- **Product Listing**: Category filtering (Women's, Men's, Accessories, New Arrivals), price range filters, sorting (newest, price asc/desc)
+- **Product Detail**: Product images, size selector, color selector, quantity selector, add to cart
+- **Search Overlay**: Full-screen frosted glass overlay with autocomplete, popular search suggestions
+- **Cart Page**: Dynamic cart with quantity controls, order summary, remove items
+- **Checkout Flow**: 3-step wizard (Shipping → Payment → Review), pre-filled demo data
+- **Order Confirmation**: Success page with order details and tracking info
+- **Account Dashboard**: Profile info (Demo User), order history
 - **Order Tracking**: Status timeline, shipping info
 
-### Medallia Integration Points
-- Config file at `/app/frontend/src/config/medallia.js`
-- Window variables documentation at `/app/frontend/src/config/WINDOW_VARIABLES.md`
-- Placeholder comments in `public/index.html` for Medallia scripts
-- `window.hfashion` object tracking: cart, products, checkout, navigation, engagement
+### Medallia Integration Ready
+- Config file: `/app/frontend/src/config/medallia.js`
+- Analytics documentation: `/app/docs/ANALYTICS.md`
+- Script placeholders in `public/index.html`:
+  - `<!-- MEDALLIA DIGITAL FEEDBACK SCRIPT -->` in `<head>`
+  - `<!-- MEDALLIA DXA SCRIPT -->` at end of `<body>`
 
-## Prioritized Backlog
+### Window Variables (`window.hfashion`)
+- Cart: `cartValue`, `cartItemCount`, `cartItems`, `cartAction`
+- Product: `currentProduct`, `productCategory`, `selectedSize`, `selectedColor`
+- Checkout: `checkout`, `checkoutStep`, `checkoutValue`, `shippingMethod`, `paymentMethod`
+- Order: `orderComplete`, `orderNumber`, `orderTotal`
+- Navigation: `currentPage`, `previousPage`, `searchQuery`, `sortBy`, `filterApplied`
+- Session: `sessionId`, `userId`, `userName`, `isLoggedIn`
+- Engagement: `pageViews`, `productsViewed`, `timeOnSite`, `scrollDepth`
+- Events: `lastEvent`, `eventHistory`
 
-### P0 (Critical) - COMPLETED
-- [x] Product catalog with categories
-- [x] Cart functionality
-- [x] Checkout flow
-- [x] Order management
-- [x] User account
-- [x] Medallia tracking variables
+### Mobile Responsive
+- Tested on iPhone viewport (375x812)
+- Mobile hamburger menu
+- Mobile filter sheet
+- 2-column product grid on mobile
 
-### P1 (High Priority)
-- [ ] Search functionality
-- [ ] Product image gallery
+## Completed Tasks (February 9, 2026)
+- [x] Fixed search overlay with frosted glass effect (createPortal)
+- [x] Removed backend directory and api.js (frontend-only)
+- [x] Verified all product images loading correctly
+- [x] Verified mobile responsiveness
+- [x] Created analytics documentation at `/app/docs/ANALYTICS.md`
+- [x] Enhanced Medallia config with script injection capability
+
+## Files Structure
+```
+/app
+├── docs/
+│   └── ANALYTICS.md          # Window variables documentation
+├── frontend/
+│   ├── public/
+│   │   └── index.html        # Medallia script placeholders
+│   └── src/
+│       ├── components/
+│       │   ├── SearchBar.jsx # Search with portal
+│       │   ├── ProductCard.jsx
+│       │   └── layout/
+│       ├── config/
+│       │   └── medallia.js   # Medallia/scripts config
+│       ├── context/
+│       │   └── CartContext.js
+│       ├── data/
+│       │   └── store.js      # All mock data
+│       ├── lib/
+│       │   ├── tracking.js   # window.hfashion tracking
+│       │   └── utils.js
+│       └── pages/
+│           ├── HomePage.jsx
+│           ├── ProductListPage.jsx
+│           ├── ProductDetailPage.jsx
+│           ├── CartPage.jsx
+│           ├── CheckoutPage.jsx
+│           └── ...
+└── memory/
+    └── PRD.md
+```
+
+## Future Enhancements (Backlog)
+- [ ] Product image gallery with multiple views
 - [ ] Wishlist functionality
-- [ ] Email notifications (mock)
-
-### P2 (Nice to Have)
 - [ ] Product reviews/ratings
 - [ ] Recently viewed products
 - [ ] Related products recommendations
 - [ ] Promo codes/discounts
 
-## Next Tasks
-1. Add actual Medallia scripts when provided
-2. Implement search functionality
-3. Add product image gallery with multiple views
-4. Enable wishlist functionality
-5. Add more product variants (sizes/colors with stock tracking)
+## Notes
+- ALL DATA IS MOCKED - No real backend or database
+- Demo user is always logged in
+- Orders and cart persist in browser localStorage
+- Medallia scripts not yet integrated (config ready, user will add tags later)
