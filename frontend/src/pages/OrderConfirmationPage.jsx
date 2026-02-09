@@ -194,13 +194,6 @@ const OrderConfirmationPage = () => {
             </Button>
           </Link>
         </div>
-
-        {/* Medallia Feedback Placeholder */}
-        <div className="mt-8 md:mt-12 p-4 md:p-6 bg-card rounded-xl border text-center" data-testid="medallia-order-feedback">
-          <p className="text-xs md:text-sm text-muted-foreground">
-            How was your checkout experience? We'd love your feedback!
-          </p>
-        </div>
       </div>
     </div>
   );
