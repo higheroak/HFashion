@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import * as api from '@/lib/api';
+import * as store from '@/data/store';
 import { trackCartUpdate } from '@/lib/tracking';
 import { toast } from 'sonner';
 
@@ -18,28 +18,26 @@ export const CartProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const fetchCart = useCallback(async () => {
-    try {
-      const data = await api.getCart();
-      setCart(data);
-      trackCartUpdate(data, 'fetch');
-    } catch (error) {
-      console.error('Error fetching cart:', error);
-    }
+  const fetchCart = useCallback(() => {
+    const data = store.getCart();
+    setCart(data);
+    trackCartUpdate(data, 'fetch');
   }, []);
 
   useEffect(() => {
     fetchCart();
   }, [fetchCart]);
 
-  const addToCart = async (productId, quantity = 1, size = null, color = null) => {
+  const addToCart = (productId, quantity = 1, size = null, color = null) => {
     setIsLoading(true);
     try {
-      const data = await api.addToCart(productId, quantity, size, color);
-      setCart(data);
-      trackCartUpdate(data, 'add');
-      toast.success('Added to cart');
-      setIsCartOpen(true);
+      const data = store.addToCart(productId, quantity, size, color);
+      if (data) {
+        setCart(data);
+        trackCartUpdate(data, 'add');
+        toast.success('Added to cart');
+        setIsCartOpen(true);
+      }
     } catch (error) {
       console.error('Error adding to cart:', error);
       toast.error('Failed to add to cart');
@@ -48,10 +46,10 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const updateCartItem = async (productId, quantity) => {
+  const updateCartItem = (productId, quantity) => {
     setIsLoading(true);
     try {
-      const data = await api.updateCartItem(productId, quantity);
+      const data = store.updateCartItem(productId, quantity);
       setCart(data);
       trackCartUpdate(data, 'update');
     } catch (error) {
@@ -62,10 +60,10 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const removeFromCart = async (productId) => {
+  const removeFromCart = (productId) => {
     setIsLoading(true);
     try {
-      const data = await api.removeFromCart(productId);
+      const data = store.removeFromCart(productId);
       setCart(data);
       trackCartUpdate(data, 'remove');
       toast.success('Removed from cart');
@@ -77,12 +75,12 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const clearCartItems = async () => {
+  const clearCartItems = () => {
     setIsLoading(true);
     try {
-      await api.clearCart();
-      setCart({ items: [], total: 0 });
-      trackCartUpdate({ items: [], total: 0 }, 'clear');
+      const data = store.clearCart();
+      setCart(data);
+      trackCartUpdate(data, 'clear');
     } catch (error) {
       console.error('Error clearing cart:', error);
     } finally {
