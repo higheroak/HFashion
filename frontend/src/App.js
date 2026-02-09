@@ -18,11 +18,14 @@ import SearchResultsPage from "@/pages/SearchResultsPage";
 import { initMedallia } from "@/config/medallia";
 import "@/lib/tracking";
 
-// Component to track route changes for Medallia SPA
+// Component to track route changes for Medallia SPA and scroll to top
 function MedalliaRouteTracker() {
   const location = useLocation();
   
   useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+    
     // Trigger Medallia SPA page view on route change
     if (window.KAMPYLE_ONSITE_SDK && typeof window.KAMPYLE_ONSITE_SDK.updatePageView === 'function') {
       window.KAMPYLE_ONSITE_SDK.updatePageView();
