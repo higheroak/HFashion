@@ -180,6 +180,9 @@ export const trackCheckout = (step, status, value = null) => {
     window.hfashion.lastInteraction = new Date().toISOString();
     
     trackEvent('checkout_progress', { step, status, value });
+    
+    // Trigger Medallia SPA page view on checkout update
+    triggerMedalliaSPA();
   }
 };
 
