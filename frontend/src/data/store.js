@@ -32,11 +32,11 @@ const productImages = {
   goldRing: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=800&fit=crop&crop=center',
 };
 
-// Hero and category images
+// Hero and category images - Clean backgrounds for sophisticated look
 export const heroImages = {
-  main: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=1000&fit=crop&crop=center',
-  secondary: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=400&fit=crop&crop=center',
-  third: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=800&fit=crop&crop=center',
+  main: 'https://images.unsplash.com/photo-1632162451352-df77c3013f25?w=800&h=1000&fit=crop&crop=center', // Woman in trench coat, neutral bg
+  secondary: 'https://images.unsplash.com/photo-1760624294582-5341f33f9fa4?w=600&h=400&fit=crop&crop=center', // Leather tote bags, clean white bg
+  third: 'https://images.unsplash.com/photo-1741605037162-b1f475a4a4d3?w=600&h=800&fit=crop&crop=center', // Woman elegant pose, brown solid bg
 };
 
 export const categoryImages = {
