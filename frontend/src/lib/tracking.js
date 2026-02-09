@@ -165,6 +165,9 @@ export const trackCartUpdate = (cart, action) => {
     window.hfashion.lastInteraction = new Date().toISOString();
     
     trackEvent(`cart_${action}`, { cartValue: cart.total, itemCount: window.hfashion.cartItemCount });
+    
+    // Trigger Medallia SPA page view on cart update
+    triggerMedalliaSPA();
   }
 };
 
