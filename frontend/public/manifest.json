@@ -1,0 +1,18 @@
+{
+  "short_name": "HFashion",
+  "name": "HFashion - Modern Fashion Retail",
+  "description": "Discover curated collections of contemporary clothing and accessories",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4A5D42",
+  "background_color": "#FAFAF9",
+  "orientation": "portrait-primary",
+  "categories": ["shopping", "lifestyle", "fashion"]
+}
