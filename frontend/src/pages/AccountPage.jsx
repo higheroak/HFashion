@@ -284,13 +284,6 @@ const AccountPage = () => {
             {renderContent()}
           </main>
         </div>
-
-        {/* Medallia Feedback Placeholder */}
-        <div className="mt-8 md:mt-12 p-4 md:p-6 bg-secondary/30 rounded-xl text-center" data-testid="medallia-account-feedback">
-          <p className="text-xs md:text-sm text-muted-foreground">
-            How can we improve your account experience?
-          </p>
-        </div>
       </div>
     </div>
   );
