@@ -88,6 +88,10 @@ const SearchResultsPage = () => {
         )}
       </div>
     </div>
+
+    {/* Medallia Embedded Feedback Container - Sibling of min-h-screen div */}
+    <div id="medallia_embedded_feedback" className="w-full"></div>
+  </>
   );
 };
 
