@@ -251,8 +251,14 @@ const ProductDetailPage = () => {
               >
                 {isCartLoading ? 'Adding...' : 'Add to Cart'}
               </Button>
-              <Button variant="outline" size="icon" className="h-11 w-11 md:h-12 md:w-12 rounded-full" data-testid="wishlist-btn">
-                <Heart className="h-5 w-5" strokeWidth={1.5} />
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className={`h-11 w-11 md:h-12 md:w-12 rounded-full ${isInWishlist(product.id) ? 'bg-red-50 border-red-200 text-red-500' : ''}`}
+                onClick={() => toggleWishlist(product)}
+                data-testid="wishlist-btn"
+              >
+                <Heart className={`h-5 w-5 ${isInWishlist(product.id) ? 'fill-red-500' : ''}`} strokeWidth={1.5} />
               </Button>
             </div>
 
