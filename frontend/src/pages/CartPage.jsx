@@ -16,18 +16,18 @@ const CartPage = () => {
 
   const subtotal = cart.total || 0;
   const shipping = subtotal >= 100 ? 0 : 9.99;
-  const tax = subtotal * 0.08;
-  const total = subtotal + shipping + tax;
+  const tax = Math.round(subtotal * 0.08 * 100) / 100;
+  const total = Math.round((subtotal + shipping + tax) * 100) / 100;
 
   if (cart.items?.length === 0) {
     return (
-      <div className="min-h-screen py-8 md:py-12">
+      <div className="min-h-screen py-6 md:py-8 lg:py-12">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
-          <h1 className="font-serif text-3xl md:text-4xl font-semibold mb-8">Shopping Cart</h1>
-          <div className="empty-state py-24">
-            <ShoppingBag className="h-20 w-20 text-muted-foreground/20 mb-6" strokeWidth={1} />
-            <p className="text-xl font-medium mb-2">Your cart is empty</p>
-            <p className="text-muted-foreground mb-8">
+          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-8">Shopping Cart</h1>
+          <div className="empty-state py-16 md:py-24">
+            <ShoppingBag className="h-16 w-16 md:h-20 md:w-20 text-muted-foreground/20 mb-6" strokeWidth={1} />
+            <p className="text-lg md:text-xl font-medium mb-2">Your cart is empty</p>
+            <p className="text-sm md:text-base text-muted-foreground mb-6 md:mb-8">
               Looks like you haven't added anything to your cart yet
             </p>
             <Link to="/products/new-arrivals">
@@ -42,22 +42,22 @@ const CartPage = () => {
   }
 
   return (
-    <div className="min-h-screen py-8 md:py-12" data-testid="cart-page">
+    <div className="min-h-screen py-6 md:py-8 lg:py-12" data-testid="cart-page">
       <div className="container mx-auto px-4 md:px-8 lg:px-12">
-        <h1 className="font-serif text-3xl md:text-4xl font-semibold mb-8">Shopping Cart</h1>
+        <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-8">Shopping Cart</h1>
 
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {/* Cart Items */}
           <div className="lg:col-span-2">
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               {cart.items?.map((item, index) => (
                 <div
                   key={`${item.product_id}-${index}`}
-                  className="flex gap-4 md:gap-6 p-4 bg-card rounded-xl border"
+                  className="flex gap-3 md:gap-4 lg:gap-6 p-3 md:p-4 bg-card rounded-xl border"
                   data-testid={`cart-item-${item.product_id}`}
                 >
                   <Link to={`/product/${item.product_id}`} className="flex-shrink-0">
-                    <div className="w-24 h-32 md:w-32 md:h-40 rounded-lg overflow-hidden bg-secondary">
+                    <div className="w-20 h-24 md:w-24 md:h-32 lg:w-32 lg:h-40 rounded-lg overflow-hidden bg-secondary">
                       <img
                         src={item.image_url}
                         alt={item.name}
@@ -66,15 +66,15 @@ const CartPage = () => {
                     </div>
                   </Link>
                   
-                  <div className="flex-1 flex flex-col">
-                    <div className="flex justify-between items-start">
-                      <div>
+                  <div className="flex-1 flex flex-col min-w-0">
+                    <div className="flex justify-between items-start gap-2">
+                      <div className="min-w-0">
                         <Link to={`/product/${item.product_id}`}>
-                          <h3 className="font-medium hover:text-primary transition-colors">
+                          <h3 className="font-medium text-sm md:text-base hover:text-primary transition-colors truncate">
                             {item.name}
                           </h3>
                         </Link>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-xs md:text-sm text-muted-foreground mt-1">
                           {item.size && `Size: ${item.size}`}
                           {item.size && item.color && ' | '}
                           {item.color && `Color: ${item.color}`}
@@ -83,34 +83,34 @@ const CartPage = () => {
                       <button
                         onClick={() => removeFromCart(item.product_id)}
                         disabled={isLoading}
-                        className="text-muted-foreground hover:text-destructive transition-colors p-1"
+                        className="text-muted-foreground hover:text-destructive transition-colors p-1 flex-shrink-0"
                         data-testid={`remove-${item.product_id}`}
                       >
-                        <Trash2 className="h-5 w-5" strokeWidth={1.5} />
+                        <Trash2 className="h-4 w-4 md:h-5 md:w-5" strokeWidth={1.5} />
                       </button>
                     </div>
                     
-                    <div className="mt-auto flex items-end justify-between">
+                    <div className="mt-auto flex items-end justify-between pt-2">
                       <div className="flex items-center border rounded-full">
                         <button
                           onClick={() => updateCartItem(item.product_id, item.quantity - 1)}
                           disabled={isLoading || item.quantity <= 1}
-                          className="w-8 h-8 flex items-center justify-center hover:bg-secondary rounded-l-full transition-colors disabled:opacity-50"
+                          className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center hover:bg-secondary rounded-l-full transition-colors disabled:opacity-50"
                           data-testid={`qty-minus-${item.product_id}`}
                         >
                           <Minus className="h-3 w-3" strokeWidth={1.5} />
                         </button>
-                        <span className="w-10 text-center text-sm">{item.quantity}</span>
+                        <span className="w-8 md:w-10 text-center text-xs md:text-sm">{item.quantity}</span>
                         <button
                           onClick={() => updateCartItem(item.product_id, item.quantity + 1)}
                           disabled={isLoading}
-                          className="w-8 h-8 flex items-center justify-center hover:bg-secondary rounded-r-full transition-colors"
+                          className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center hover:bg-secondary rounded-r-full transition-colors"
                           data-testid={`qty-plus-${item.product_id}`}
                         >
                           <Plus className="h-3 w-3" strokeWidth={1.5} />
                         </button>
                       </div>
-                      <p className="font-medium">{formatPrice(item.price * item.quantity)}</p>
+                      <p className="font-medium text-sm md:text-base">{formatPrice(item.price * item.quantity)}</p>
                     </div>
                   </div>
                 </div>
@@ -120,10 +120,10 @@ const CartPage = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-card rounded-xl border p-6 sticky top-24">
-              <h2 className="font-serif text-xl font-semibold mb-6">Order Summary</h2>
+            <div className="bg-card rounded-xl border p-4 md:p-6 sticky top-24">
+              <h2 className="font-serif text-lg md:text-xl font-semibold mb-4 md:mb-6">Order Summary</h2>
               
-              <div className="space-y-3 mb-6">
+              <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
                   <span data-testid="subtotal">{formatPrice(subtotal)}</span>
@@ -146,26 +146,26 @@ const CartPage = () => {
 
               <Separator className="my-4" />
 
-              <div className="flex justify-between font-semibold mb-6">
+              <div className="flex justify-between font-semibold mb-4 md:mb-6">
                 <span>Total</span>
                 <span data-testid="total">{formatPrice(total)}</span>
               </div>
 
               {subtotal < 100 && (
-                <p className="text-sm text-muted-foreground mb-4 text-center">
+                <p className="text-xs md:text-sm text-muted-foreground mb-4 text-center">
                   Add {formatPrice(100 - subtotal)} more for free shipping!
                 </p>
               )}
 
               <Link to="/checkout">
-                <Button className="w-full btn-primary h-12 gap-2" data-testid="proceed-checkout-btn">
+                <Button className="w-full btn-primary h-11 md:h-12 gap-2" data-testid="proceed-checkout-btn">
                   Proceed to Checkout
                   <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
                 </Button>
               </Link>
 
-              <Link to="/products/new-arrivals" className="block mt-4">
-                <Button variant="outline" className="w-full rounded-full">
+              <Link to="/products/new-arrivals" className="block mt-3 md:mt-4">
+                <Button variant="outline" className="w-full rounded-full text-sm">
                   Continue Shopping
                 </Button>
               </Link>
