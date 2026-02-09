@@ -3,33 +3,33 @@
  * Frontend-only - all data stored in localStorage
  */
 
-// Real fashion stock photos from Unsplash (direct URLs that load reliably)
+// Real fashion stock photos from Unsplash (curated for product relevance)
 const productImages = {
-  // New Arrivals
-  nordicKnit: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop&crop=center',
-  sageSweater: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop&crop=center',
-  stackedKnit: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=800&fit=crop&crop=center',
-  texturedKnit: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=600&h=800&fit=crop&crop=center',
+  // New Arrivals - Knitwear
+  nordicKnit: 'https://images.unsplash.com/photo-1633972767447-5098f0322a45?w=600&h=800&fit=crop&crop=center',
+  sageSweater: 'https://images.unsplash.com/photo-1687275167528-5aac76c3e782?w=600&h=800&fit=crop&crop=center',
+  stackedKnit: 'https://images.unsplash.com/photo-1731399738276-5d147430232b?w=600&h=800&fit=crop&crop=center',
+  texturedKnit: 'https://images.unsplash.com/photo-1764974345389-09da4244809c?w=600&h=800&fit=crop&crop=center',
   
   // Men's
-  blueKurta: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop&crop=center',
+  blueKurta: 'https://images.unsplash.com/photo-1770359993283-a2c2f386584e?w=600&h=800&fit=crop&crop=center',
   geometricShirt: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=800&fit=crop&crop=center',
   threePieceSuit: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=800&fit=crop&crop=center',
-  cordJacket: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop&crop=center',
+  cordJacket: 'https://images.unsplash.com/photo-1660776864454-628551d83a2c?w=600&h=800&fit=crop&crop=center',
   
   // Women's
   whiteBlouse: 'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&h=800&fit=crop&crop=center',
   ribbedDress: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop&crop=center',
-  cityDress: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&h=800&fit=crop&crop=center',
-  linenMaxi: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&h=800&fit=crop&crop=center',
+  cityDress: 'https://images.unsplash.com/photo-1758207575462-c70302b4a162?w=600&h=800&fit=crop&crop=center',
+  linenMaxi: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&h=800&fit=crop&crop=center',
   
   // Accessories
   creamClutch: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop&crop=center',
-  jewelrySet: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=800&fit=crop&crop=center',
-  sunglasses: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=800&fit=crop&crop=center',
-  leatherBelt: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=800&fit=crop&crop=center',
-  leatherWatch: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=800&fit=crop&crop=center',
-  goldRing: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=800&fit=crop&crop=center',
+  jewelrySet: 'https://images.unsplash.com/photo-1691370298583-4364b396e1e3?w=600&h=800&fit=crop&crop=center',
+  sunglasses: 'https://images.unsplash.com/photo-1642792533153-4b03e4d93e09?w=600&h=800&fit=crop&crop=center',
+  leatherBelt: 'https://images.unsplash.com/photo-1664286074176-5206ee5dc878?w=600&h=800&fit=crop&crop=center',
+  leatherWatch: 'https://images.unsplash.com/photo-1758887952896-8491d393afe2?w=600&h=800&fit=crop&crop=center',
+  goldRing: 'https://images.unsplash.com/photo-1764181237984-70ac5f211b06?w=600&h=800&fit=crop&crop=center',
 };
 
 // Hero and category images
