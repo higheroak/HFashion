@@ -13,6 +13,7 @@ import { formatPrice, getCategoryLabel } from '@/lib/utils';
 const ProductDetailPage = () => {
   const { productId } = useParams();
   const { addToCart, isLoading: isCartLoading } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
