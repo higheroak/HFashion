@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medallia Diagnostic Tool</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 { color: #4A5D42; margin-top: 0; }
+    h2 { color: #666; font-size: 18px; margin-top: 30px; }
+    .status { 
+      padding: 10px 15px; 
+      border-radius: 4px; 
+      margin: 10px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+    }
+    .success { background: #d4edda; color: #155724; }
+    .error { background: #f8d7da; color: #721c24; }
+    .warning { background: #fff3cd; color: #856404; }
+    .info { background: #d1ecf1; color: #0c5460; }
+    button {
+      background: #4A5D42;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 10px 10px 0;
+    }
+    button:hover { background: #3d4d36; }
+    pre {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 12px;
+    }
+    .log {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 15px;
+      border-radius: 4px;
+      max-height: 300px;
+      overflow-y: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      margin: 15px 0;
+    }
+    .log-entry {
+      margin: 5px 0;
+      padding: 3px 0;
+      border-bottom: 1px solid #333;
+    }
+    .log-success { color: #4ec9b0; }
+    .log-error { color: #f48771; }
+    .log-warning { color: #dcdcaa; }
+    .log-info { color: #9cdcfe; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Medallia Integration Diagnostic</h1>
+    <p>Use this page to debug Medallia integration on your site.</p>
+    
+    <h2>Deployment Configuration</h2>
+    <div class="info status">
+      <strong>Deployment ID:</strong> 737820<br>
+      <strong>Form ID:</strong> 35557<br>
+      <strong>CDN:</strong> resources.digital-cloud.medallia.eu<br>
+      <strong>Current Domain:</strong> <span id="currentDomain"></span>
+    </div>
+    
+    <h2>Diagnostic Tests</h2>
+    <button onclick="runDiagnostics()">🧪 Run Full Diagnostics</button>
+    <button onclick="testShowForm()">📋 Test Show Form (35557)</button>
+    <button onclick="clearLogs()">🗑️ Clear Logs</button>
+    
+    <div id="diagnosticLog" class="log"></div>
+    
+    <h2>Quick Checks</h2>
+    <div id="quickChecks"></div>
+    
+    <h2>Medallia Data Dump</h2>
+    <button onclick="dumpMedalliaData()">📊 Dump All Medallia Data</button>
+    <pre id="dataDump">Click "Dump All Medallia Data" to see configuration...</pre>
+  </div>
+
+  <!-- Medallia Configuration -->
+  <script>
+    window.KAMPYLE_ONSITE_CONFIG = {
+      debug: true,
+      bypassDomainCheck: true
+    };
+    
+    const logs = [];
+    
+    function log(message, type = 'info') {
+      const timestamp = new Date().toLocaleTimeString();
+      logs.push({ timestamp, message, type });
+      updateLogDisplay();
+    }
+    
+    function updateLogDisplay() {
+      const logDiv = document.getElementById('diagnosticLog');
+      logDiv.innerHTML = logs.map(l => 
+        `<div class="log-entry log-${l.type}">[${l.timestamp}] ${l.message}</div>`
+      ).join('');
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+    
+    function clearLogs() {
+      logs.length = 0;
+      updateLogDisplay();
+      document.getElementById('quickChecks').innerHTML = '';
+      document.getElementById('dataDump').textContent = 'Logs cleared.';
+    }
+    
+    function addStatus(text, className) {
+      const div = document.createElement('div');
+      div.className = `status ${className}`;
+      div.textContent = text;
+      document.getElementById('quickChecks').appendChild(div);
+    }
+    
+    async function runDiagnostics() {
+      clearLogs();
+      log('Starting diagnostics...', 'info');
+      
+      // Check 1: Domain
+      document.getElementById('currentDomain').textContent = window.location.hostname;
+      log(`Current domain: ${window.location.hostname}`, 'info');
+      
+      // Check 2: SDK Loaded
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      if (typeof KAMPYLE_ONSITE_SDK !== 'undefined') {
+        log('✅ KAMPYLE_ONSITE_SDK is loaded', 'success');
+        addStatus('✅ SDK Loaded', 'success');
+      } else {
+        log('❌ KAMPYLE_ONSITE_SDK is NOT loaded', 'error');
+        addStatus('❌ SDK Not Loaded - Check Network tab', 'error');
+        return;
+      }
+      
+      // Check 3: SDK Methods
+      const methods = Object.keys(KAMPYLE_ONSITE_SDK);
+      log(`SDK Methods available: ${methods.join(', ')}`, 'info');
+      
+      // Check 4: KAMPYLE_DATA
+      if (typeof KAMPYLE_DATA !== 'undefined') {
+        log('✅ KAMPYLE_DATA exists', 'success');
+        addStatus('✅ Medallia Data Loaded', 'success');
+        
+        // Check deployment ID
+        if (KAMPYLE_DATA.deploymentId) {
+          log(`Deployment ID: ${KAMPYLE_DATA.deploymentId}`, 'info');
+        }
+        
+        // Check domain allowed
+        if (KAMPYLE_DATA.hasOwnProperty('domainAllowed')) {
+          if (KAMPYLE_DATA.domainAllowed) {
+            log('✅ Domain is whitelisted', 'success');
+            addStatus('✅ Domain Whitelisted', 'success');
+          } else {
+            log('❌ Domain is NOT whitelisted in Medallia', 'error');
+            addStatus('❌ Domain NOT Whitelisted - Add higheroak.github.io to Medallia admin', 'error');
+          }
+        }
+        
+        // Check forms
+        if (KAMPYLE_DATA.forms) {
+          const formIds = Object.keys(KAMPYLE_DATA.forms);
+          log(`Available forms: ${formIds.join(', ')}`, 'info');
+          
+          if (KAMPYLE_DATA.forms['35557']) {
+            log('✅ Form 35557 is configured', 'success');
+            addStatus('✅ Form 35557 Found', 'success');
+          } else {
+            log('⚠️ Form 35557 not found in configuration', 'warning');
+            addStatus('⚠️ Form 35557 Not Found - Check Form ID in Medallia', 'warning');
+          }
+        }
+      } else {
+        log('⚠️ KAMPYLE_DATA not yet available', 'warning');
+        addStatus('⚠️ Medallia Data Loading...', 'warning');
+      }
+      
+      // Check 5: Event listeners
+      log('Diagnostic complete. Try "Test Show Form" button.', 'success');
+    }
+    
+    function testShowForm() {
+      log('Testing KAMPYLE_ONSITE_SDK.showForm(35557)...', 'info');
+      
+      if (typeof KAMPYLE_ONSITE_SDK === 'undefined') {
+        log('❌ SDK not loaded yet', 'error');
+        addStatus('❌ SDK Not Loaded - Wait a moment and try again', 'error');
+        return;
+      }
+      
+      const result = KAMPYLE_ONSITE_SDK.showForm(35557);
+      
+      if (result === true) {
+        log('✅ showForm returned TRUE - Survey should be visible!', 'success');
+        addStatus('✅ Form Displayed Successfully!', 'success');
+      } else {
+        log('❌ showForm returned FALSE', 'error');
+        addStatus('❌ Form NOT Displayed', 'error');
+        
+        log('Possible reasons:', 'warning');
+        log('1. Domain not whitelisted in Medallia', 'warning');
+        log('2. Form targeting rules not met', 'warning');
+        log('3. Form is not published', 'warning');
+        log('4. Frequency cap reached (clear cookies)', 'warning');
+        log('5. Form ID is incorrect', 'warning');
+      }
+    }
+    
+    function dumpMedalliaData() {
+      const data = {
+        SDK_Loaded: typeof KAMPYLE_ONSITE_SDK !== 'undefined',
+        SDK_Methods: typeof KAMPYLE_ONSITE_SDK !== 'undefined' ? Object.keys(KAMPYLE_ONSITE_SDK) : null,
+        KAMPYLE_DATA: typeof KAMPYLE_DATA !== 'undefined' ? KAMPYLE_DATA : 'Not loaded',
+        Window_Vars: Object.keys(window).filter(k => k.toLowerCase().includes('kampyle') || k.toLowerCase().includes('medallia'))
+      };
+      
+      document.getElementById('dataDump').textContent = JSON.stringify(data, null, 2);
+      log('Medallia data dumped', 'info');
+    }
+    
+    // Listen for Medallia ready event
+    window.addEventListener('kampyleReady', function() {
+      log('🎉 Medallia SDK Ready Event Fired!', 'success');
+      addStatus('🎉 Medallia Ready!', 'success');
+    });
+    
+    // Log initial domain
+    document.getElementById('currentDomain').textContent = window.location.hostname;
+  </script>
+  
+  <!-- Load Medallia Script -->
+  <script>
+    (function() {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://resources.digital-cloud.medallia.eu/wdceu/737820/onsite/embed.js?t=' + new Date().getTime();
+      
+      script.onerror = function() {
+        log('❌ Failed to load Medallia script', 'error');
+        addStatus('❌ Script Load Failed - Check Network tab', 'error');
+      };
+      
+      script.onload = function() {
+        log('✅ Medallia script loaded successfully', 'success');
+      };
+      
+      document.body.appendChild(script);
+    })();
+  </script>
+</body>
+</html>
