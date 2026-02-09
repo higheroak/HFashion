@@ -5,6 +5,20 @@
  * Variables are stored in window.hfashion object for Medallia DXA integration.
  */
 
+// Medallia SPA Page View Tracking
+const triggerMedalliaSPA = () => {
+  if (typeof window !== 'undefined') {
+    try {
+      if (window.KAMPYLE_ONSITE_SDK && typeof window.KAMPYLE_ONSITE_SDK.updatePageView === 'function') {
+        window.KAMPYLE_ONSITE_SDK.updatePageView();
+        console.log('[Medallia SPA] Page view updated');
+      }
+    } catch (error) {
+      console.error('[Medallia SPA] Error updating page view:', error);
+    }
+  }
+};
+
 // Initialize tracking object
 const initTracking = () => {
   if (typeof window !== 'undefined') {
