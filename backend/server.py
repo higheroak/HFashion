@@ -130,6 +130,28 @@ async def root():
     return {"message": "Welcome to HFashion API"}
 
 # Products Routes
+@api_router.get("/products/search")
+async def search_products(q: str = "", limit: int = 10):
+    """Search products by name or description"""
+    if not q or len(q) < 2:
+        return []
+    
+    # Case-insensitive search in name and description
+    query = {
+        "$or": [
+            {"name": {"$regex": q, "$options": "i"}},
+            {"description": {"$regex": q, "$options": "i"}}
+        ]
+    }
+    
+    products = await db.products.find(query, {"_id": 0}).limit(limit).to_list(limit)
+    
+    for p in products:
+        if isinstance(p.get('created_at'), str):
+            p['created_at'] = datetime.fromisoformat(p['created_at'])
+    
+    return products
+
 @api_router.get("/products", response_model=List[Product])
 async def get_products(
     category: Optional[str] = None,

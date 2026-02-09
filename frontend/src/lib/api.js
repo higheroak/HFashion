@@ -16,6 +16,11 @@ export const getProducts = async (params = {}) => {
   return response.data;
 };
 
+export const searchProducts = async (query, limit = 10) => {
+  const response = await api.get('/products/search', { params: { q: query, limit } });
+  return response.data;
+};
+
 export const getProduct = async (productId) => {
   const response = await api.get(`/products/${productId}`);
   return response.data;
