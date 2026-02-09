@@ -23,9 +23,23 @@ const SearchResultsPage = () => {
     }
   }, [query]);
 
+  // Trigger Medallia SPA update after embedded container is mounted
+  useEffect(() => {
+    // Small delay to ensure DOM is fully rendered
+    const timer = setTimeout(() => {
+      if (window.KAMPYLE_ONSITE_SDK && typeof window.KAMPYLE_ONSITE_SDK.updatePageView === 'function') {
+        window.KAMPYLE_ONSITE_SDK.updatePageView();
+        console.log('[Medallia SPA] Search results page loaded with embedded container');
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [query, products.length]);
+
   return (
-    <div className="min-h-screen py-6 md:py-8 lg:py-12" data-testid="search-results-page">
-      <div className="container mx-auto px-4 md:px-8 lg:px-12">
+    <>
+      <div className="min-h-screen py-6 md:py-8 lg:py-12" data-testid="search-results-page">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm mb-4 md:mb-6">
           <Link to="/" className="breadcrumb-item">Home</Link>
