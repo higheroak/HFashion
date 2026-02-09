@@ -108,6 +108,9 @@ export const trackPageView = (pageName, category = null) => {
     window.hfashion.lastInteraction = new Date().toISOString();
     
     trackEvent('page_view', { page: pageName, category });
+    
+    // Trigger Medallia SPA page view
+    triggerMedalliaSPA();
   }
 };
 
