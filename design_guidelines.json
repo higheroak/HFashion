@@ -1,0 +1,119 @@
+{
+  "identity": {
+    "persona": "E1",
+    "mission": "Create a modern, stylish fashion retail site using muted earth tones.",
+    "principles": [
+      "Fusion over Imitation",
+      "Emotion First",
+      "Content is King",
+      "Zoom in",
+      "Negative Space",
+      "Contrast"
+    ]
+  },
+  "typography": {
+    "headings": {
+      "family": "Playfair Display, serif",
+      "weights": ["400", "600", "700"],
+      "usage": "All section headings, hero titles, product names on detail page. Use tight tracking.",
+      "install_url": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "weights": ["300", "400", "500", "600"],
+      "usage": "Product descriptions, prices, buttons, navigation, small labels.",
+      "install_url": "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+    }
+  },
+  "colors": {
+    "palette_name": "Earthy Elegance",
+    "mode": "light",
+    "base": {
+      "background": "#FDFCF8",
+      "foreground": "#2C2622",
+      "card": "#FFFFFF",
+      "card_foreground": "#2C2622",
+      "border": "#E6E2DE"
+    },
+    "brand": {
+      "primary": "#4A5D42",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#E8E4DE",
+      "secondary_foreground": "#2C2622",
+      "accent": "#C66B4B",
+      "accent_foreground": "#FFFFFF",
+      "muted": "#F5F2EF",
+      "muted_foreground": "#78716C"
+    },
+    "utility": {
+      "success": "#5C7C51",
+      "warning": "#D9A54C",
+      "error": "#B94A48",
+      "info": "#6B8FA3"
+    }
+  },
+  "spacing_layout": {
+    "scale": "tailwind",
+    "container_padding": "px-4 md:px-8 lg:px-12",
+    "section_spacing": "py-16 md:py-24",
+    "grid_gap": "gap-8",
+    "border_radius": {
+      "buttons": "rounded-full",
+      "cards": "rounded-lg",
+      "inputs": "rounded-md"
+    },
+    "modes": {
+      "hero": "Tetris Grid (Mode A) - Asymmetric layout with large dominant imagery.",
+      "listing": "High Density Grid (Mode B) - 3 or 4 columns, minimal chrome.",
+      "detail": "Split Screen - Fixed image gallery on left, scrollable details on right."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-full uppercase tracking-widest text-xs font-bold transition-all duration-300",
+      "secondary": "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full uppercase tracking-widest text-xs font-bold transition-all duration-300",
+      "ghost": "text-primary hover:text-primary/80 hover:bg-secondary/50 px-4 py-2 rounded-md"
+    },
+    "cards": {
+      "product": "group relative flex flex-col gap-3 bg-transparent border-none shadow-none hover:-translate-y-1 transition-transform duration-300",
+      "product_image": "aspect-[3/4] w-full overflow-hidden rounded-md bg-secondary",
+      "feature": "p-8 bg-secondary/30 rounded-xl border border-border/50 hover:border-primary/20 transition-colors"
+    },
+    "navigation": {
+      "wrapper": "sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60",
+      "link": "text-sm font-medium transition-colors hover:text-primary relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+    },
+    "inputs": {
+      "default": "flex h-12 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50"
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Use subtle grain overlay on solid backgrounds to avoid 'digital flatness'.",
+    "shadows": "soft-shadow: shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+    "glassmorphism": "backdrop-blur-xl bg-white/60 border border-white/20 shadow-sm (Use for sticky headers and modals)",
+    "micro_interactions": "All interactive elements must have hover states (opacity change, scale, or underline growth)."
+  },
+  "image_urls": {
+    "hero_main": "https://images.unsplash.com/photo-1746948268925-11aaaa72f05d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwzfHxmYXNoaW9uJTIwbW9kZWwlMjBiZWlnZSUyMG9saXZlJTIwY2xvdGhpbmclMjBhZXN0aGV0aWN8ZW58MHx8fHwxNzcwNjM1NTE3fDA&ixlib=rb-4.1.0&q=85",
+    "hero_secondary": "https://images.unsplash.com/photo-1713199472895-6ae87bc45bb8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWwlMjBiZWlnZSUyMG9saXZlJTIwY2xvdGhpbmclMjBhZXN0aGV0aWN8ZW58MHx8fHwxNzcwNjM1NTE3fDA&ixlib=rb-4.1.0&q=85",
+    "category_men": "https://images.unsplash.com/photo-1744135995007-f1dde493d241?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHw0fHxmYXNoaW9uJTIwbW9kZWwlMjBiZWlnZSUyMG9saXZlJTIwY2xvdGhpbmclMjBhZXN0aGV0aWN8ZW58MHx8fHwxNzcwNjM1NTE3fDA&ixlib=rb-4.1.0&q=85",
+    "category_women": "https://images.unsplash.com/photo-1509087859087-a384654eca4d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwyfHxmYXNoaW9uJTIwbW9kZWwlMjBiZWlnZSUyMG9saXZlJTIwY2xvdGhpbmclMjBhZXN0aGV0aWN8ZW58MHx8fHwxNzcwNjM1NTE3fDA&ixlib=rb-4.1.0&q=85",
+    "category_accessories": "https://images.unsplash.com/photo-1565374369705-acde12f3caa2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBtaW5pbWFsJTIwZmFzaGlvbiUyMHN0b3JlJTIwaW50ZXJpb3IlMjBlYXJ0aCUyMHRvbmVzfGVufDB8fHx8MTc3MDYzNTUxOHww&ixlib=rb-4.1.0&q=85",
+    "background_texture": "https://images.unsplash.com/photo-1665815844395-06f64f44b5e3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBtaW5pbWFsJTIwZmFzaGlvbiUyMHN0b3JlJTIwaW50ZXJpb3IlMjBlYXJ0aCUyMHRvbmVzfGVufDB8fHx8MTc3MDYzNTUxOHww&ixlib=rb-4.1.0&q=85"
+  },
+  "instructions_to_main_agent": {
+    "general": "Build 'HFashion' as a premium, grounded retail experience. The code must be clean, modular, and use the Shadcn components available in /app/frontend/src/components/ui.",
+    "medallia": "Add a placeholder for Medallia scripts in public/index.html head and body. Create a config file for Medallia settings if needed, but primarily ensure the window variables are accessible.",
+    "theme_setup": "Update tailwind.config.js with the custom color palette provided in the 'colors' section. Do NOT use the default shadcn slate colors. Override them with these warm earth tones.",
+    "components": "Customize Shadcn components. Remove the default radius if it's too small, increase it to 0.5rem or full pill shapes for buttons. Change focus rings to the primary color.",
+    "layout_rules": "Use the Tetris Grid for the Homepage Hero. Use a sticky header with glassmorphism. Ensure strict accessibility contrast.",
+    "demo_logic": "Since there is no backend, simulate the 'LoggedIn' state. Hardcode a user profile in a context or global state. Mock the cart functionality with local state."
+  },
+  "universal_guidelines": {
+    "avoid_ai_slop": "Do not make generic centered layouts. Use asymmetry. Avoid 'Inter' font for headings.",
+    "animations": "Use framer-motion for smooth entrance animations. Add 'group-hover' effects to all product cards.",
+    "data_test_ids": "All interactive elements MUST include data-testid attributes (e.g., 'add-to-cart-btn', 'nav-link-home').",
+    "toasts": "Use 'sonner' for all notifications (Added to cart, Order placed).",
+    "icons": "Use lucide-react icons. Keep them thin (stroke-width={1.5}) for elegance."
+  }
+}
