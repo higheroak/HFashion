@@ -3,46 +3,46 @@
  * All data is stored in frontend - no backend required
  */
 
-// Product images using picsum.photos for reliable loading
+// Product images using placeholder.co for reliable instant loading
 const productImages = {
-  // New Arrivals - fashion themed seeds
-  nordicKnit: 'https://picsum.photos/seed/cardigan/600/800',
-  sageSweater: 'https://picsum.photos/seed/sweater/600/800',
-  stackedKnit: 'https://picsum.photos/seed/knitwear/600/800',
-  texturedKnit: 'https://picsum.photos/seed/texture/600/800',
+  // New Arrivals
+  nordicKnit: 'https://placehold.co/600x800/e8e4de/4a5d42?text=Nordic+Knit',
+  sageSweater: 'https://placehold.co/600x800/d4cfc5/4a5d42?text=Sage+Sweater',
+  stackedKnit: 'https://placehold.co/600x800/c9c4ba/4a5d42?text=Stacked+Knit',
+  texturedKnit: 'https://placehold.co/600x800/bfb8ae/4a5d42?text=Textured+Knit',
   
   // Men's
-  blueKurta: 'https://picsum.photos/seed/menblue/600/800',
-  geometricShirt: 'https://picsum.photos/seed/shirt/600/800',
-  threePieceSuit: 'https://picsum.photos/seed/suit/600/800',
-  cordJacket: 'https://picsum.photos/seed/jacket/600/800',
+  blueKurta: 'https://placehold.co/600x800/a5b4c0/2c2622?text=Blue+Kurta',
+  geometricShirt: 'https://placehold.co/600x800/9aabb8/2c2622?text=Geometric+Shirt',
+  threePieceSuit: 'https://placehold.co/600x800/5c6670/f5f3ef?text=Three+Piece+Suit',
+  cordJacket: 'https://placehold.co/600x800/c4785a/f5f3ef?text=Cord+Jacket',
   
   // Women's
-  whiteBlouse: 'https://picsum.photos/seed/blouse/600/800',
-  ribbedDress: 'https://picsum.photos/seed/dress1/600/800',
-  cityDress: 'https://picsum.photos/seed/dress2/600/800',
-  linenMaxi: 'https://picsum.photos/seed/maxi/600/800',
+  whiteBlouse: 'https://placehold.co/600x800/f5f3ef/4a5d42?text=White+Blouse',
+  ribbedDress: 'https://placehold.co/600x800/e8e4de/4a5d42?text=Ribbed+Dress',
+  cityDress: 'https://placehold.co/600x800/a5b4c0/2c2622?text=City+Dress',
+  linenMaxi: 'https://placehold.co/600x800/d4cfc5/4a5d42?text=Linen+Maxi',
   
   // Accessories
-  creamClutch: 'https://picsum.photos/seed/clutch/600/800',
-  jewelrySet: 'https://picsum.photos/seed/jewelry/600/800',
-  sunglasses: 'https://picsum.photos/seed/sunglasses/600/800',
-  leatherBelt: 'https://picsum.photos/seed/belt/600/800',
-  leatherWatch: 'https://picsum.photos/seed/watch/600/800',
-  goldRing: 'https://picsum.photos/seed/ring/600/800',
+  creamClutch: 'https://placehold.co/600x800/f5f3ef/c4785a?text=Cream+Clutch',
+  jewelrySet: 'https://placehold.co/600x800/d4af37/2c2622?text=Jewelry+Set',
+  sunglasses: 'https://placehold.co/600x800/2c2622/f5f3ef?text=Sunglasses',
+  leatherBelt: 'https://placehold.co/600x800/8b4513/f5f3ef?text=Leather+Belt',
+  leatherWatch: 'https://placehold.co/600x800/2c2622/d4af37?text=Leather+Watch',
+  goldRing: 'https://placehold.co/600x800/d4af37/2c2622?text=Gold+Ring',
 };
 
 // Hero and category images
 export const heroImages = {
-  main: 'https://picsum.photos/seed/fashionhero/800/1000',
-  secondary: 'https://picsum.photos/seed/accessories/600/400',
-  third: 'https://picsum.photos/seed/collection/600/800',
+  main: 'https://placehold.co/800x1000/e8e4de/4a5d42?text=HFashion',
+  secondary: 'https://placehold.co/600x400/d4cfc5/4a5d42?text=Accessories',
+  third: 'https://placehold.co/600x800/c9c4ba/4a5d42?text=Collection',
 };
 
 export const categoryImages = {
-  women: 'https://picsum.photos/seed/womenfashion/600/800',
-  men: 'https://picsum.photos/seed/menfashion/600/800',
-  accessories: 'https://picsum.photos/seed/accessoriescat/600/800',
+  women: 'https://placehold.co/600x800/e8e4de/4a5d42?text=Women',
+  men: 'https://placehold.co/600x800/5c6670/f5f3ef?text=Men',
+  accessories: 'https://placehold.co/600x800/d4af37/2c2622?text=Accessories',
 };
 
 // Products data
