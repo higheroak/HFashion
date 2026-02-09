@@ -81,6 +81,20 @@ const Footer = () => {
                   Contact Us
                 </span>
               </li>
+              <li>
+                <button
+                  onClick={() => {
+                    if (window.KAMPYLE_ONSITE_SDK && typeof window.KAMPYLE_ONSITE_SDK.showForm === 'function') {
+                      window.KAMPYLE_ONSITE_SDK.showForm(35568);
+                    } else {
+                      console.warn('[Medallia] SDK not loaded yet');
+                    }
+                  }}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                >
+                  Provide Feedback
+                </button>
+              </li>
             </ul>
           </div>
 
