@@ -217,6 +217,9 @@ export const trackOrderComplete = (order) => {
       orderTotal: order.total,
       itemCount: window.hfashion.orderItemCount 
     });
+    
+    // Trigger Medallia SPA page view on order completion
+    triggerMedalliaSPA();
   }
 };
 
