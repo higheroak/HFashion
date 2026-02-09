@@ -24,12 +24,16 @@ const ProductCard = ({ product }) => {
       data-testid={`product-card-${product.id}`}
     >
       {/* Image Container */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-secondary mb-3">
+      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-muted mb-3">
         <img
           src={product.image_url}
           alt={product.name}
           className="product-image w-full h-full object-cover"
-          loading="lazy"
+          loading="eager"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = `https://placehold.co/600x800/e8e4de/4a5d42?text=${encodeURIComponent(product.name)}`;
+          }}
         />
         
         {/* Badges */}
