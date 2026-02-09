@@ -1,34 +1,251 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* HFashion Custom Styles */
+
+/* Hero Section */
+.hero-section {
+    min-height: 80vh;
+    position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.hero-gradient {
+    background: linear-gradient(135deg, rgba(74, 93, 66, 0.1) 0%, rgba(253, 252, 248, 0.9) 100%);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Category Cards */
+.category-card {
+    position: relative;
+    overflow: hidden;
 }
 
-.App-link {
-    color: #61dafb;
+.category-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(44, 38, 34, 0.6) 0%, transparent 60%);
+    z-index: 1;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.category-card img {
+    transition: transform 0.7s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Quick Add Button */
+.quick-add-btn {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .quick-add-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Size Selector */
+.size-btn {
+    @apply w-10 h-10 flex items-center justify-center border rounded-md text-sm transition-all duration-200;
+}
+
+.size-btn:not(:disabled):hover {
+    @apply border-primary;
+}
+
+.size-btn.selected {
+    @apply bg-primary text-white border-primary;
+}
+
+.size-btn:disabled {
+    @apply opacity-40 cursor-not-allowed line-through;
+}
+
+/* Color Selector */
+.color-btn {
+    @apply w-8 h-8 rounded-full border-2 border-transparent transition-all duration-200;
+}
+
+.color-btn:hover {
+    @apply scale-110;
+}
+
+.color-btn.selected {
+    @apply ring-2 ring-primary ring-offset-2;
+}
+
+/* Cart Sidebar */
+.cart-overlay {
+    background: rgba(44, 38, 34, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+/* Quantity Stepper */
+.qty-btn {
+    @apply w-8 h-8 flex items-center justify-center border rounded transition-colors;
+}
+
+.qty-btn:hover {
+    @apply bg-secondary;
+}
+
+/* Checkout Steps */
+.checkout-step {
+    @apply flex items-center gap-3;
+}
+
+.checkout-step-number {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium;
+}
+
+.checkout-step-number.active {
+    @apply bg-primary text-white;
+}
+
+.checkout-step-number.completed {
+    @apply bg-green-600 text-white;
+}
+
+.checkout-step-number.pending {
+    @apply bg-secondary text-muted-foreground;
+}
+
+/* Order Status Timeline */
+.status-timeline {
+    position: relative;
+}
+
+.status-timeline::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: hsl(var(--border));
+}
+
+.status-item {
+    position: relative;
+    padding-left: 48px;
+}
+
+.status-dot {
+    @apply absolute left-2 w-6 h-6 rounded-full flex items-center justify-center z-10;
+}
+
+.status-dot.active {
+    @apply bg-primary text-white;
+}
+
+.status-dot.completed {
+    @apply bg-green-600 text-white;
+}
+
+.status-dot.pending {
+    @apply bg-secondary text-muted-foreground;
+}
+
+/* Sale Badge */
+.sale-badge {
+    @apply absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded;
+}
+
+/* New Badge */
+.new-badge {
+    @apply absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded;
+}
+
+/* Empty State */
+.empty-state {
+    @apply flex flex-col items-center justify-center py-16 text-center;
+}
+
+/* Loading Skeleton */
+.skeleton {
+    @apply bg-secondary animate-pulse rounded;
+}
+
+/* Toast Customization */
+[data-sonner-toaster] {
+    font-family: 'Manrope', sans-serif !important;
+}
+
+/* Form Inputs */
+.form-input {
+    @apply flex h-12 w-full rounded-md border border-input bg-transparent px-4 py-2 text-sm transition-colors placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* Responsive Grid */
+.products-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6;
+}
+
+/* Breadcrumb */
+.breadcrumb-item {
+    @apply text-sm text-muted-foreground hover:text-foreground transition-colors;
+}
+
+.breadcrumb-separator {
+    @apply mx-2 text-muted-foreground;
+}
+
+/* Image Gallery */
+.gallery-thumb {
+    @apply w-20 h-24 border-2 border-transparent rounded overflow-hidden cursor-pointer transition-all;
+}
+
+.gallery-thumb.active {
+    @apply border-primary;
+}
+
+.gallery-thumb:hover {
+    @apply border-primary/50;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    @apply fixed inset-0 z-50 bg-background;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+/* Filters */
+.filter-section {
+    @apply border-b border-border pb-4 mb-4;
+}
+
+.filter-option {
+    @apply flex items-center gap-2 py-1 cursor-pointer hover:text-primary transition-colors;
+}
+
+/* Account Navigation */
+.account-nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-colors;
+}
+
+.account-nav-item:hover {
+    @apply bg-secondary;
+}
+
+.account-nav-item.active {
+    @apply bg-primary text-white;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+    @apply p-6 bg-secondary/30 rounded-xl;
+}
+
+/* Newsletter */
+.newsletter-input {
+    @apply flex-1 h-12 px-4 rounded-l-full border-0 bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary;
+}
+
+.newsletter-btn {
+    @apply h-12 px-6 rounded-r-full bg-primary text-white font-medium uppercase tracking-wider text-xs transition-colors hover:bg-primary/90;
 }
