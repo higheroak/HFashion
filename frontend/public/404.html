@@ -9,7 +9,9 @@
       // string into just a query string, and then redirects the browser
       // to the new url with only a query string and hash fragment
       
-      var pathSegmentsToKeep = 0;
+      // Set to 1 for GitHub Pages project sites (username.github.io/project-name/)
+      // This preserves the /HFashion/ part of the URL
+      var pathSegmentsToKeep = 1;
       
       var l = window.location;
       l.replace(
