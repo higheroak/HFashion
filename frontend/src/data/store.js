@@ -3,46 +3,46 @@
  * All data is stored in frontend - no backend required
  */
 
-// Product images using reliable Unsplash URLs
+// Product images using reliable Unsplash URLs (without query params for thumbnails)
 const productImages = {
   // New Arrivals
-  nordicKnit: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop',
-  sageSweater: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop',
-  stackedKnit: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=800&fit=crop',
-  texturedKnit: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=600&h=800&fit=crop',
+  nordicKnit: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600',
+  sageSweater: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600',
+  stackedKnit: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600',
+  texturedKnit: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=600',
   
   // Men's
-  blueKurta: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&h=800&fit=crop',
-  geometricShirt: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=800&fit=crop',
-  threePieceSuit: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=800&fit=crop',
-  cordJacket: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop',
+  blueKurta: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600',
+  geometricShirt: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600',
+  threePieceSuit: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600',
+  cordJacket: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600',
   
   // Women's
-  whiteBlouse: 'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&h=800&fit=crop',
-  ribbedDress: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop',
-  cityDress: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&h=800&fit=crop',
-  linenMaxi: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&h=800&fit=crop',
+  whiteBlouse: 'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600',
+  ribbedDress: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600',
+  cityDress: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600',
+  linenMaxi: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600',
   
   // Accessories
-  creamClutch: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop',
-  jewelrySet: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=800&fit=crop',
-  sunglasses: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=800&fit=crop',
-  leatherBelt: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=800&fit=crop',
-  leatherWatch: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=800&fit=crop',
-  goldRing: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=800&fit=crop',
+  creamClutch: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600',
+  jewelrySet: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600',
+  sunglasses: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600',
+  leatherBelt: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600',
+  leatherWatch: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600',
+  goldRing: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600',
 };
 
 // Hero and category images
 export const heroImages = {
-  main: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=1000&fit=crop',
-  secondary: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=400&fit=crop',
-  third: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=800&fit=crop',
+  main: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800',
+  secondary: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600',
+  third: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600',
 };
 
 export const categoryImages = {
-  women: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=800&fit=crop',
-  men: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop',
-  accessories: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=800&fit=crop',
+  women: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600',
+  men: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600',
+  accessories: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600',
 };
 
 // Products data
@@ -79,7 +79,7 @@ export const demoUser = {
   id: 'demo-user-001',
   name: 'Demo User',
   email: 'demo@hfashion.com',
-  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop',
+  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100',
   created_at: '2025-01-01T00:00:00Z',
 };
 
