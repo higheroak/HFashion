@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User, Package, MapPin, Heart, LogOut, ChevronRight } from 'lucide-react';
+import { User, Package, MapPin, Heart, LogOut, ChevronRight, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { demoUser, getOrders } from '@/data/store';
-import { formatPrice, formatDate, getOrderStatusLabel, getOrderStatusColor } from '@/lib/utils';
+import { useWishlist } from '@/context/WishlistContext';
+import { useCart } from '@/context/CartContext';
+import { formatPrice, formatDate, getOrderStatusLabel, getOrderStatusColor, getCategoryLabel } from '@/lib/utils';
 import { trackPageView } from '@/lib/tracking';
 
 const navItems = [
