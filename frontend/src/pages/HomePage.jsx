@@ -44,21 +44,21 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="hero-section relative overflow-hidden" data-testid="hero-section">
         <div className="absolute inset-0 hero-gradient" />
-        <div className="container mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-16 lg:py-24 relative">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12 lg:py-16 relative">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="animate-slide-up text-center lg:text-left">
-              <span className="inline-block text-xs uppercase tracking-[0.3em] text-primary font-medium mb-4">
+              <span className="inline-block text-xs uppercase tracking-[0.3em] text-primary font-medium mb-3">
                 New Season Collection
               </span>
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-4 md:mb-6">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-4">
                 Timeless Style,<br />
                 <span className="text-primary">Modern Elegance</span>
               </h1>
-              <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-6 md:mb-8 max-w-md mx-auto lg:mx-0">
+              <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-5 md:mb-6 max-w-md mx-auto lg:mx-0">
                 Discover our curated collection of contemporary fashion pieces designed for 
                 the modern individual who values quality and sustainability.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <Link to="/products/new-arrivals">
                   <Button className="btn-primary w-full sm:w-auto" data-testid="shop-new-arrivals-btn">
                     Shop New Arrivals
@@ -74,16 +74,16 @@ const HomePage = () => {
             
             {/* Hero Images - Tetris Grid */}
             <div className="relative hidden lg:block">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4">
-                  <div className="rounded-2xl overflow-hidden h-64 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-3">
+                  <div className="rounded-2xl overflow-hidden h-56 animate-slide-up" style={{ animationDelay: '0.2s' }}>
                     <img
                       src={heroImages.main}
                       alt="Fashion model"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="rounded-2xl overflow-hidden h-48 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+                  <div className="rounded-2xl overflow-hidden h-40 animate-slide-up" style={{ animationDelay: '0.4s' }}>
                     <img
                       src={heroImages.secondary}
                       alt="Fashion accessories"
@@ -91,8 +91,8 @@ const HomePage = () => {
                     />
                   </div>
                 </div>
-                <div className="space-y-4 pt-8">
-                  <div className="rounded-2xl overflow-hidden h-80 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+                <div className="space-y-3 pt-6">
+                  <div className="rounded-2xl overflow-hidden h-72 animate-slide-up" style={{ animationDelay: '0.3s' }}>
                     <img
                       src={heroImages.third}
                       alt="Fashion collection"
