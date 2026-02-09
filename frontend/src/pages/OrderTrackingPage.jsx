@@ -81,19 +81,6 @@ const OrderTrackingPage = () => {
 
   const currentStatusIndex = getStatusIndex(order.status);
 
-  // Trigger Medallia SPA update after embedded container is mounted
-  useEffect(() => {
-    // Small delay to ensure DOM is fully rendered
-    const timer = setTimeout(() => {
-      if (window.KAMPYLE_ONSITE_SDK && typeof window.KAMPYLE_ONSITE_SDK.updatePageView === 'function') {
-        window.KAMPYLE_ONSITE_SDK.updatePageView();
-        console.log('[Medallia SPA] Order tracking page loaded with embedded container');
-      }
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, [order.order_number]);
-
   return (
     <>
       <div className="min-h-screen py-6 md:py-8 lg:py-12" data-testid="order-tracking-page">
