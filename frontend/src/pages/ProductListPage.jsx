@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Checkbox } from '@/components/ui/checkbox';
 import ProductCard from '@/components/ProductCard';
-import { getProducts } from '@/lib/api';
+import { getProducts } from '@/data/store';
 import { trackPageView, trackFilter } from '@/lib/tracking';
 import { getCategoryLabel } from '@/lib/utils';
 
@@ -27,7 +27,6 @@ const ProductListPage = () => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState('newest');
   const [priceFilter, setPriceFilter] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -35,21 +34,11 @@ const ProductListPage = () => {
   useEffect(() => {
     trackPageView('products', category);
     
-    const loadProducts = async () => {
-      setIsLoading(true);
-      try {
-        const params = category && category !== 'all' ? { category } : {};
-        const data = await getProducts(params);
-        setProducts(data);
-        setFilteredProducts(data);
-      } catch (error) {
-        console.error('Error loading products:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadProducts();
+    // Load products from store
+    const params = category && category !== 'all' ? { category } : {};
+    const data = getProducts(params);
+    setProducts(data);
+    setFilteredProducts(data);
   }, [category]);
 
   useEffect(() => {
@@ -73,7 +62,7 @@ const ProductListPage = () => {
     filtered.sort((a, b) => {
       if (sortBy === 'price_asc') return a.price - b.price;
       if (sortBy === 'price_desc') return b.price - a.price;
-      return new Date(b.created_at) - new Date(a.created_at);
+      return 0; // newest - keep original order
     });
 
     setFilteredProducts(filtered);
@@ -100,31 +89,31 @@ const ProductListPage = () => {
   const pageTitle = category ? getCategoryLabel(category) : 'All Products';
 
   return (
-    <div className="min-h-screen py-8 md:py-12">
+    <div className="min-h-screen py-6 md:py-8 lg:py-12">
       <div className="container mx-auto px-4 md:px-8 lg:px-12">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm mb-6" data-testid="breadcrumb">
+        <nav className="flex items-center gap-2 text-sm mb-4 md:mb-6" data-testid="breadcrumb">
           <Link to="/" className="breadcrumb-item">Home</Link>
           <ChevronRight className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           <span className="text-foreground font-medium">{pageTitle}</span>
         </nav>
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 md:mb-8">
           <div>
-            <h1 className="font-serif text-3xl md:text-4xl font-semibold" data-testid="page-title">
+            <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold" data-testid="page-title">
               {pageTitle}
             </h1>
-            <p className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm text-muted-foreground mt-1 md:mt-2">
               {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'}
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             {/* Mobile Filter Button */}
             <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="outline" className="rounded-full gap-2" data-testid="mobile-filter-btn">
+                <Button variant="outline" size="sm" className="rounded-full gap-2" data-testid="mobile-filter-btn">
                   <SlidersHorizontal className="h-4 w-4" strokeWidth={1.5} />
                   Filters
                   {priceFilter.length > 0 && (
@@ -170,7 +159,7 @@ const ProductListPage = () => {
 
             {/* Sort Dropdown */}
             <Select value={sortBy} onValueChange={handleSortChange}>
-              <SelectTrigger className="w-[180px] rounded-full" data-testid="sort-select">
+              <SelectTrigger className="w-[140px] sm:w-[180px] rounded-full text-sm" data-testid="sort-select">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
@@ -184,9 +173,9 @@ const ProductListPage = () => {
           </div>
         </div>
 
-        <div className="flex gap-8">
+        <div className="flex gap-6 md:gap-8">
           {/* Desktop Sidebar Filters */}
-          <aside className="hidden md:block w-56 flex-shrink-0">
+          <aside className="hidden md:block w-48 lg:w-56 flex-shrink-0">
             <div className="sticky top-24">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-medium">Filters</h3>
@@ -223,12 +212,12 @@ const ProductListPage = () => {
           <div className="flex-1">
             {/* Active Filters */}
             {priceFilter.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-2 mb-4 md:mb-6">
                 {priceFilter.map((filter) => (
                   <button
                     key={filter}
                     onClick={() => handlePriceFilterChange(filter)}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm"
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-xs md:text-sm"
                     data-testid={`active-filter-${filter}`}
                   >
                     {priceRanges.find((r) => r.value === filter)?.label}
@@ -238,19 +227,8 @@ const ProductListPage = () => {
               </div>
             )}
 
-            {isLoading ? (
-              <div className="products-grid">
-                {[...Array(8)].map((_, i) => (
-                  <div key={i} className="space-y-3">
-                    <div className="skeleton aspect-[3/4] rounded-lg" />
-                    <div className="skeleton h-3 w-16" />
-                    <div className="skeleton h-4 w-32" />
-                    <div className="skeleton h-4 w-20" />
-                  </div>
-                ))}
-              </div>
-            ) : filteredProducts.length === 0 ? (
-              <div className="empty-state py-24">
+            {filteredProducts.length === 0 ? (
+              <div className="empty-state py-16 md:py-24">
                 <p className="text-lg font-medium mb-2">No products found</p>
                 <p className="text-sm text-muted-foreground mb-6">
                   Try adjusting your filters or browse all products
