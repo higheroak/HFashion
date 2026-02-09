@@ -351,7 +351,12 @@ const SearchBar = ({ isOpen, onClose }) => {
                       ))}
                     </div>
                     <div className="p-4 border-t bg-secondary/30">
-                      <Button onClick={handleSearchSubmit} variant="outline" className="w-full rounded-full">
+                      <Button 
+                        onClick={(e) => handleSearchSubmit(e)} 
+                        variant="outline" 
+                        className="w-full rounded-full"
+                        type="button"
+                      >
                         View all results for "{query}"
                       </Button>
                     </div>
