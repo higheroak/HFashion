@@ -94,7 +94,10 @@ const SearchBar = ({ isOpen, onClose }) => {
   }, [navigate, onClose]);
 
   const handleSearchSubmit = useCallback((e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (query.length >= 2) {
       navigate(`/search?q=${encodeURIComponent(query)}`);
       setShowResults(false);
