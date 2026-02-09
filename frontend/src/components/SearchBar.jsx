@@ -104,8 +104,8 @@ const SearchBar = ({ isOpen, onClose }) => {
       className="fixed inset-0 z-50"
       data-testid="search-overlay"
     >
-      {/* Solid background */}
-      <div className="absolute inset-0 bg-background" />
+      {/* Solid opaque background */}
+      <div className="absolute inset-0 bg-[#fdfcf8]" style={{ backgroundColor: 'hsl(45, 25%, 98%)' }} />
       
       {/* Content */}
       <div className="relative h-full overflow-y-auto">
