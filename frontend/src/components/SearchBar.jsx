@@ -98,14 +98,15 @@ const SearchBar = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  return (
+  // Use portal to render outside header DOM
+  return createPortal(
     <div 
-      className="fixed inset-0 z-50"
+      className="fixed inset-0 z-[100]"
       data-testid="search-overlay"
     >
       {/* Frosted glass background */}
       <div 
-        className="absolute inset-0 bg-background/80 backdrop-blur-md"
+        className="absolute inset-0 bg-background/85 backdrop-blur-lg"
         onClick={onClose}
       />
       
