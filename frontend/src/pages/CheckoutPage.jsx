@@ -41,7 +41,8 @@ const CheckoutPage = () => {
     trackPageView('checkout');
     trackCheckout(1, 'started', cart.total);
     
-    if (cart.items?.length === 0) {
+    // Only redirect if cart is loaded and empty
+    if (cart.items !== undefined && cart.items?.length === 0) {
       navigate('/cart');
     }
   }, [cart.items, cart.total, navigate]);
