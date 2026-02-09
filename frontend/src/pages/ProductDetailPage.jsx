@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator';
 import ProductCard from '@/components/ProductCard';
 import { getProduct, getProducts } from '@/data/store';
 import { useCart } from '@/context/CartContext';
+import { useWishlist } from '@/context/WishlistContext';
 import { trackPageView, trackProductView, trackProductSelection } from '@/lib/tracking';
 import { formatPrice, getCategoryLabel } from '@/lib/utils';
 
