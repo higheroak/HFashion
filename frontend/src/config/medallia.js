@@ -138,16 +138,50 @@ export const medalliaConfig = {
 };
 
 /**
- * Initialize Medallia tracking
- * Call this function after Medallia scripts are loaded
+ * Initialize Medallia and third-party scripts
+ * Call this function to inject configured scripts
  */
 export const initMedallia = () => {
   if (typeof window !== 'undefined') {
     // Initialize window tracking object if not exists
     window.hfashionTracking = window.hfashionTracking || {};
     
-    console.log('[Medallia] Configuration loaded. Waiting for Medallia scripts.');
-    console.log('[Medallia] See WINDOW_VARIABLES.md for available tracking variables.');
+    // Inject configured scripts if enabled
+    if (scriptsConfig.enabled) {
+      // Inject head scripts
+      scriptsConfig.headScripts.forEach(script => {
+        if (!document.getElementById(script.id)) {
+          const el = document.createElement('script');
+          el.id = script.id;
+          if (script.type === 'external') {
+            el.src = script.src;
+            if (script.async) el.async = true;
+          } else {
+            el.textContent = script.content;
+          }
+          document.head.appendChild(el);
+        }
+      });
+      
+      // Inject body scripts
+      scriptsConfig.bodyScripts.forEach(script => {
+        if (!document.getElementById(script.id)) {
+          const el = document.createElement('script');
+          el.id = script.id;
+          if (script.type === 'external') {
+            el.src = script.src;
+            if (script.async) el.async = true;
+          } else {
+            el.textContent = script.content;
+          }
+          document.body.appendChild(el);
+        }
+      });
+    }
+    
+    console.log('[HFashion] Scripts configuration loaded.');
+    console.log('[HFashion] Tracking data available at: window.hfashion');
+    console.log('[HFashion] See /src/config/WINDOW_VARIABLES.md for documentation.');
   }
 };
 
