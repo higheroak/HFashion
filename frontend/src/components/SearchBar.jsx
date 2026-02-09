@@ -243,10 +243,10 @@ const SearchBar = ({ isOpen, onClose }) => {
       {/* Desktop: Centered dropdown panel */}
       <div className="hidden md:block fixed inset-0 z-[100]" data-testid="search-overlay-desktop">
         {/* Semi-transparent backdrop */}
-        <div className="absolute inset-0 bg-black/30" onClick={onClose} />
+        <div className="absolute inset-0 bg-black/30 z-0" onClick={onClose} />
         
         {/* Centered container */}
-        <div className="flex justify-center pt-20">
+        <div className="flex justify-center pt-20 relative z-10">
           <div 
             ref={containerRef}
             className="w-full max-w-xl mx-4 bg-background rounded-2xl shadow-2xl border overflow-hidden"
