@@ -20,6 +20,8 @@ const navItems = [
 const AccountPage = () => {
   const location = useLocation();
   const [orders, setOrders] = useState([]);
+  const { wishlistItems, wishlistCount, removeFromWishlist } = useWishlist();
+  const { addToCart } = useCart();
 
   const currentTab = location.pathname.split('/').pop() || 'account';
 
