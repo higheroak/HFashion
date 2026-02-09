@@ -68,6 +68,9 @@ Build an e-commerce demo website called "HFashion" — a modern, stylish fashion
 - [x] Updated product images with more relevant fashion photos
 - [x] Removed backend directory and api.js (frontend-only)
 - [x] Created analytics documentation at `/app/docs/ANALYTICS.md`
+- [x] **Updated products to US/UK audience** - Removed kurta, replaced with Oxford shirt, blazers
+- [x] **Fixed checkout flow** - Now redirects to Order Confirmation page with full order summary
+- [x] **Reduced homepage spacing** - Compact hero section (removed min-height: 80vh)
 
 ## Files Structure
 ```
