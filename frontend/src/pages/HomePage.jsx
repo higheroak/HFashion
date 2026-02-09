@@ -196,9 +196,9 @@ const HomePage = () => {
       </section>
 
       {/* Trending Products */}
-      <section className="py-12 md:py-16 lg:py-24" data-testid="trending-section">
+      <section className="py-10 md:py-12 lg:py-16" data-testid="trending-section">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 md:mb-8 lg:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 md:mb-8">
             <div className="text-center sm:text-left">
               <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">What's Hot</span>
               <h2 className="font-serif text-2xl md:text-3xl font-semibold mt-2">Trending Now</h2>
