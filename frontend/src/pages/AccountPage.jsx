@@ -75,10 +75,10 @@ const AccountPage = () => {
               <p className="text-xl md:text-2xl font-semibold text-primary">{orders.length}</p>
               <p className="text-xs md:text-sm text-muted-foreground">Total Orders</p>
             </div>
-            <div className="bg-card rounded-xl border p-3 md:p-4 text-center">
-              <p className="text-xl md:text-2xl font-semibold text-primary">0</p>
+            <Link to="/account/wishlist" className="bg-card rounded-xl border p-3 md:p-4 text-center hover:border-primary/30 transition-colors">
+              <p className="text-xl md:text-2xl font-semibold text-primary">{wishlistCount}</p>
               <p className="text-xs md:text-sm text-muted-foreground">Wishlist Items</p>
-            </div>
+            </Link>
             <div className="bg-card rounded-xl border p-3 md:p-4 text-center hidden md:block">
               <p className="text-xl md:text-2xl font-semibold text-primary">1</p>
               <p className="text-xs md:text-sm text-muted-foreground">Saved Addresses</p>
