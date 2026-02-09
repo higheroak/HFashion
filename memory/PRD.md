@@ -71,11 +71,14 @@ Build an e-commerce demo website called "HFashion" — a modern, stylish fashion
 - [x] Updated products to US/UK audience - Removed kurta, replaced with Oxford shirt, blazers
 - [x] Fixed checkout flow - Now redirects to Order Confirmation page with full order summary
 - [x] Reduced homepage spacing - Compact hero section (removed min-height: 80vh)
-- [x] **Removed feedback section** from order confirmation page
-- [x] **Updated hero images** to use clean solid/gradient backgrounds:
-  - Woman in trench coat (neutral bg)
-  - Leather tote bags (clean white bg)
-  - Woman in elegant pose (brown solid bg)
+- [x] Removed feedback section from order confirmation page
+- [x] **Updated ALL product images to have consistent clean/solid backgrounds:**
+  - Hero images: trench coat, leather bags, elegant pose (neutral/solid bg)
+  - New Arrivals: turtleneck, sweaters (warm brown, grey, pink, light blue bg)
+  - Men's: shirts, suits, blazers (grey/neutral studio bg)
+  - Women's: blouses, blazers, skirts, dresses (elegant studio bg)
+  - Accessories: bags, jewelry, sunglasses, belt, watch, ring (white/minimal bg)
+  - Category images: updated for consistency
 
 ## Files Structure
 ```
