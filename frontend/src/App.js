@@ -28,7 +28,7 @@ function App() {
     <CartProvider>
       <WishlistProvider>
         <div className="App flex flex-col min-h-screen">
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Navbar />
             <main className="flex-1">
               <Routes>
