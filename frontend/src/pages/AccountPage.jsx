@@ -178,14 +178,64 @@ const AccountPage = () => {
         <div data-testid="wishlist-section">
           <h2 className="font-serif text-xl md:text-2xl font-semibold mb-4 md:mb-6">My Wishlist</h2>
           
-          <div className="text-center py-12 bg-card rounded-xl border">
-            <Heart className="h-10 w-10 md:h-12 md:w-12 text-muted-foreground/30 mx-auto mb-4" strokeWidth={1} />
-            <p className="font-medium text-sm md:text-base mb-2">Your wishlist is empty</p>
-            <p className="text-xs md:text-sm text-muted-foreground mb-6">Save items you love by clicking the heart icon</p>
-            <Link to="/products/new-arrivals">
-              <Button className="btn-primary text-sm">Explore Products</Button>
-            </Link>
-          </div>
+          {wishlistItems.length === 0 ? (
+            <div className="text-center py-12 bg-card rounded-xl border">
+              <Heart className="h-10 w-10 md:h-12 md:w-12 text-muted-foreground/30 mx-auto mb-4" strokeWidth={1} />
+              <p className="font-medium text-sm md:text-base mb-2">Your wishlist is empty</p>
+              <p className="text-xs md:text-sm text-muted-foreground mb-6">Save items you love by clicking the heart icon</p>
+              <Link to="/products/new-arrivals">
+                <Button className="btn-primary text-sm">Explore Products</Button>
+              </Link>
+            </div>
+          ) : (
+            <div className="grid gap-3 md:gap-4">
+              {wishlistItems.map((item) => (
+                <div key={item.id} className="bg-card rounded-xl border p-3 md:p-4 flex gap-3 md:gap-4" data-testid={`wishlist-item-${item.id}`}>
+                  <Link to={`/product/${item.id}`} className="w-20 h-24 md:w-24 md:h-32 rounded-lg overflow-hidden bg-secondary flex-shrink-0">
+                    <img src={item.image_url} alt={item.name} className="w-full h-full object-cover" />
+                  </Link>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
+                      {getCategoryLabel(item.category)}
+                    </p>
+                    <Link to={`/product/${item.id}`} className="font-medium text-sm md:text-base hover:text-primary transition-colors line-clamp-1">
+                      {item.name}
+                    </Link>
+                    <div className="flex items-center gap-2 mt-1 mb-3">
+                      <span className="font-medium text-sm">{formatPrice(item.price)}</span>
+                      {item.original_price && (
+                        <span className="text-xs text-muted-foreground line-through">
+                          {formatPrice(item.original_price)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex gap-2">
+                      <Button 
+                        size="sm" 
+                        className="text-xs h-8"
+                        onClick={() => {
+                          addToCart(item.id, 1, null, null);
+                          removeFromWishlist(item.id);
+                        }}
+                        data-testid={`move-to-cart-${item.id}`}
+                      >
+                        Add to Cart
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-xs h-8 text-destructive hover:text-destructive"
+                        onClick={() => removeFromWishlist(item.id)}
+                        data-testid={`remove-wishlist-${item.id}`}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       );
     }
