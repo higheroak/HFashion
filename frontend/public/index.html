@@ -63,8 +63,7 @@
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.async = true;
-        // Add timestamp to prevent caching
-        script.src = 'https://resources.digital-cloud.medallia.eu/wdceu/737820/onsite/embed.js?t=' + new Date().getTime();
+        script.src = 'https://resources.digital-cloud.medallia.eu/wdceu/737820/onsite/embed.js';
         
         // Add error handling
         script.onerror = function() {
